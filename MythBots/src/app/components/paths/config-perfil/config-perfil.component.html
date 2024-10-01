@@ -1,10 +1,46 @@
-<h1>Configuración de Perfil</h1>
-<form>
-  <label for="username">Nombre de usuario:</label>
-  <input id="username" type="text">
-  
-  <label for="password">Contraseña:</label>
-  <input id="password" type="password">
-  
-  <button type="submit">Guardar Cambios</button>
-</form>
+<div class="config-perfil-container">
+  <div class="left-panel">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541" alt="Profile Image" class="profile-image" />
+    <nav class="navigation">
+      <a (click)="activeTab = 'perfil'" [ngClass]="{'active': activeTab === 'perfil'}">Perfil</a>
+      <a (click)="activeTab = 'contrasenas'" [ngClass]="{'active': activeTab === 'contrasenas'}">Contraseñas</a>
+      <a (click)="activeTab = 'direcciones'" [ngClass]="{'active': activeTab === 'direcciones'}">Direcciones</a>
+      <a (click)="activeTab = 'mensajes'" [ngClass]="{'active': activeTab === 'mensajes'}">Mensajes</a>
+    </nav>
+  </div>
+  <div class="right-panel">
+    <div *ngIf="activeTab === 'perfil'" class="perfil-section">
+      <h2>Perfil</h2>
+      <form>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" [(ngModel)]="user.nombre" name="nombre" />
+
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" [(ngModel)]="user.apellidos" name="apellidos" />
+
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" [(ngModel)]="user.correo" name="correo" />
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" [(ngModel)]="user.telefono" name="telefono" />
+
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" [(ngModel)]="user.direccion" name="direccion" />
+
+        <label for="ciudad">Ciudad:</label>
+        <input type="text" id="ciudad" [(ngModel)]="user.ciudad" name="ciudad" />
+
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" [(ngModel)]="user.estado" name="estado" />
+
+        <label for="cp">CP:</label>
+        <input type="text" id="cp" [(ngModel)]="user.cp" name="cp" />
+
+        <div class="buttons">
+          <button type="button" (click)="reset()">Resetear</button>
+          <button type="submit" (click)="save()">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
