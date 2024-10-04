@@ -1,0 +1,99 @@
+@import './_variables.scss';
+
+// Tipografías
+$font-family-primary: 'Roboto', sans-serif;
+
+// Estilos de texto
+$font-title-size: 2.5rem;           // Títulos grandes
+$font-subtitle-size: 1.8rem;        // Subtítulos
+$font-body-size: 1rem;              // Texto normal
+$font-small-text-size: 0.875rem;    // Texto pequeño
+
+// Textos
+h1,
+.title {
+    font-size: $font-title-size;
+    color: $color-primary;
+    font-family: $font-family-primary;
+}
+
+h2,
+.subtitle {
+    font-size: $font-subtitle-size;
+    color: $color-secondary;
+    font-family: $font-family-primary;
+}
+
+p,
+.body-text {
+    font-size: $font-body-size;
+    color: $color-black;
+    font-family: $font-family-primary;
+}
+
+.small-text {
+    font-size: $font-small-text-size;
+    color: $color-gray-6;
+    font-family: $font-family-primary;
+}
+
+// Botones
+.button {
+    background-color: $color-primary;
+    color: $color-white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: $font-body-size;
+    font-family: $font-family-primary;
+
+    &:hover {
+        background-color: $color-primary-6;
+    }
+
+    &:active {
+        background-color: $color-primary-7;
+    }
+
+    &:disabled {
+        background-color: $color-gray-4;
+        cursor: not-allowed;
+    }
+}
+
+// Botones secundarios
+.button-secondary {
+    background-color: $color-secondary;
+    color: $color-white;
+
+    &:hover {
+        background-color: $color-secondary-6;
+    }
+
+    &:active {
+        background-color: $color-secondary-7;
+    }
+
+    &:disabled {
+        background-color: $color-gray-4;
+    }
+}
+
+// Estilos adicionales para elementos interactivos
+.input {
+    border: 1px solid $color-gray-3;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: $font-body-size;
+    font-family: $font-family-primary;
+
+    &:focus {
+        border-color: $color-primary;
+    }
+
+    &:disabled {
+        background-color: $color-gray-1;
+        border-color: $color-gray-3;
+    }
+}

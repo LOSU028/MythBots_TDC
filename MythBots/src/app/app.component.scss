@@ -1,0 +1,21 @@
+body {
+    background: $background-gradient;
+}
+
+h1 {
+    color: $color-primary;
+}
+
+footer {
+    background: $footer-gradient;
+}
+
+@media (max-width: $breakpoint-tablet) {
+    //Estilo para tables
+
+}
+
+@media (max-width: $breakpoint-mobile){
+    //Estilo para mobile
+
+}
