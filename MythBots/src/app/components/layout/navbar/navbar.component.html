@@ -2,26 +2,17 @@
     <div class="navbar-frame">
         <div class="navbar-logo"></div> <!-- Logo de la empresa -->
         <div class="navbar-separator"></div>
+
         <div class="navbar-frame__menu">
-            <div class="navbar-item navbar-item--3d-print">
-                <span class="navbar-item__text">3D Print</span>
-            </div>
-            <div class="navbar-item navbar-item--pcb-design">
-                <span class="navbar-item__text">PCB Design</span>
-            </div>
-            <div class="navbar-item navbar-item--create-funko">
-                <span class="navbar-item__text">Create Funko</span>
-            </div>
-            <div class="navbar-item navbar-item--courses">
-                <span class="navbar-item__text">Courses</span>
-            </div>
-            <div class="navbar-item navbar-item--educational-robotics">
-                <span class="navbar-item__text">Educational Robotics</span>
-            </div>
-            <div class="navbar-item navbar-item--contact">
-                <span class="navbar-item__text">Contact</span>
+            <div class="navbar-item" *ngFor="let item of menuItems">
+                <span class="navbar-item__text">{{ item }}</span>
             </div>
         </div>
+
+        <!--<div class="navbar-search">
+            <input type="text" placeholder="Buscar..." />
+        </div>-->
+
         <div class="navbar-account"></div> <!-- Icono de cuenta de usuario -->
     </div>
 </nav>

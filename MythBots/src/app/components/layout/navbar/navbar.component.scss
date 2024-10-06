@@ -23,7 +23,7 @@
     align-items: center;
     padding-right: 30px;
     gap: 20px;
-    align-self: stretch;
+    flex-grow: 1; // Permite que el menú use el espacio disponible
 }
 
 .navbar-logo {
@@ -50,7 +50,7 @@
     color: $color-white; // Color del texto usando variable global
 
     &__text {
-        text-align: center;
+        text-align: left; // Alinear texto a la izquierda
         font-family: 'Akshar', sans-serif; // Asegúrate de importar la fuente
         font-size: 24px; // Tamaño de fuente específico
         font-weight: 500;
@@ -58,29 +58,15 @@
     }
 }
 
-// Clases específicas para cada elemento del menú
-.navbar-item--3d-print {
-    @extend .navbar-item__text;
-}
+.navbar-search {
+    margin-left: auto; // Mueve el buscador a la derecha
 
-.navbar-item--pcb-design {
-    @extend .navbar-item__text;
-}
-
-.navbar-item--create-funko {
-    @extend .navbar-item__text;
-}
-
-.navbar-item--courses {
-    @extend .navbar-item__text;
-}
-
-.navbar-item--educational-robotics {
-    @extend .navbar-item__text;
-}
-
-.navbar-item--contact {
-    @extend .navbar-item__text;
+    input {
+        padding: 8px;
+        border-radius: 4px;
+        border: none;
+        width: 200px; // Ancho fijo para el buscador
+    }
 }
 
 .navbar-account {
