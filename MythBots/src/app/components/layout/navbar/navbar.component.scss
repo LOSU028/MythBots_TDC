@@ -1,0 +1,91 @@
+@import '../../../../variables';
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 7px 30px;
+    gap: 10px;
+    background: $color-primary; // Color primario
+    box-shadow: 4px 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-frame {
+    display: flex;
+    height: 94px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.navbar-frame__menu {
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+    gap: 20px;
+    align-self: stretch;
+}
+
+.navbar-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 100px;
+    background: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.m.wikipedia.org%2Fwiki%2FArchivo%3AImage-not-found.png&psig=AOvVaw1W56VVF4dc25TJUrrpN6YV&ust=1728328373491000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJia4Ii7-ogDFQAAAAAdAAAAABAE') lightgray 50% / cover no-repeat; // Agrega la ruta de la imagen
+}
+
+.navbar-separator {
+    width: 2px;
+    height: 60px;
+    background: $color-white; // Color de la línea usando variable global
+    box-shadow: 4px 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-item {
+    display: flex;
+    height: 56px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: $color-white; // Color del texto usando variable global
+
+    &__text {
+        text-align: center;
+        font-family: 'Akshar', sans-serif; // Asegúrate de importar la fuente
+        font-size: 24px; // Tamaño de fuente específico
+        font-weight: 500;
+        line-height: normal;
+    }
+}
+
+// Clases específicas para cada elemento del menú
+.navbar-item--3d-print {
+    @extend .navbar-item__text;
+}
+
+.navbar-item--pcb-design {
+    @extend .navbar-item__text;
+}
+
+.navbar-item--create-funko {
+    @extend .navbar-item__text;
+}
+
+.navbar-item--courses {
+    @extend .navbar-item__text;
+}
+
+.navbar-item--educational-robotics {
+    @extend .navbar-item__text;
+}
+
+.navbar-item--contact {
+    @extend .navbar-item__text;
+}
+
+.navbar-account {
+    width: 62px;
+    height: 62px;
+    border-radius: 100px;
+    background: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.m.wikipedia.org%2Fwiki%2FArchivo%3AImage-not-found.png&psig=AOvVaw1W56VVF4dc25TJUrrpN6YV&ust=1728328373491000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJia4Ii7-ogDFQAAAAAdAAAAABAE') lightgray 50% / cover no-repeat; // Agrega la ruta de la imagen
+}
