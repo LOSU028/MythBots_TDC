@@ -4,9 +4,9 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 7px 30px;
+    padding: 5px 30px;
     gap: 10px;
-    background: $color-primary; // Color primario
+    background: $color-primary;
     box-shadow: 4px 10px 25px rgba(0, 0, 0, 0.25);
 }
 
@@ -38,6 +38,7 @@
     height: 60px;
     background: $color-white; // Color de la línea usando variable global
     box-shadow: 4px 10px 40px rgba(0, 0, 0, 0.25);
+    margin: 20px;
 }
 
 .navbar-item {
@@ -47,12 +48,12 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    color: $color-white; // Color del texto usando variable global
+    color: $color-white;                    // Color del texto usando variable global
 
     &__text {
-        text-align: left; // Alinear texto a la izquierda
-        font-family: 'Akshar', sans-serif; // Asegúrate de importar la fuente
-        font-size: 24px; // Tamaño de fuente específico
+        text-align: left;                   // Alinear texto a la izquierda
+        font-family: 'Akshar', sans-serif;  // Asegúrate de importar la fuente
+        font-size: 18px;                    // Tamaño de fuente específico
         font-weight: 500;
         line-height: normal;
     }

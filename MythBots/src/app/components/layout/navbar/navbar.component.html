@@ -1,18 +1,23 @@
 <nav class="navbar">
     <div class="navbar-frame">
-        <div class="navbar-logo"></div> <!-- Logo de la empresa -->
+        <!-- Logo de la empresa -->
+        <div class="navbar-logo"></div>
+        <!-- Linea -->
         <div class="navbar-separator"></div>
 
+        <!-- Contenido-->
         <div class="navbar-frame__menu">
             <div class="navbar-item" *ngFor="let item of menuItems">
                 <span class="navbar-item__text">{{ item }}</span>
             </div>
         </div>
 
+        <!-- Buscador  -->
         <!--<div class="navbar-search">
             <input type="text" placeholder="Buscar..." />
         </div>-->
 
-        <div class="navbar-account"></div> <!-- Icono de cuenta de usuario -->
+        <!-- Icono de cuenta de usuario -->
+        <div class="navbar-account"></div>
     </div>
 </nav>
