@@ -5,11 +5,7 @@
             <img src="../../../../../public/resources/mythbots_logo.png" alt="Logo" class="footer__logo-image" />
         </div>
         <div class="footer__section-content">
-            <p class="footer__slogan">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..
-                t enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            </p>
+            <p class="footer__slogan">{{ slogan }}</p>
         </div>
     </section>
 
@@ -20,9 +16,7 @@
         </div>
         <div class="footer__section-content">
             <ul class="footer__list">
-                <li>Acerca de</li>
-                <li>Historia</li>
-                <li>Quiénes somos</li>
+                <li *ngFor="let item of historyItems">{{ item }}</li>
             </ul>
         </div>
     </section>
@@ -34,9 +28,7 @@
         </div>
         <div class="footer__section-content">
             <ul class="footer__list">
-                <li>Productos</li>
-                <li>Servicios</li>
-                <li>Cursos</li>
+                <li *ngFor="let item of serviceItems">{{ item }}</li>
             </ul>
         </div>
     </section>
@@ -48,8 +40,10 @@
         </div>
         <div class="footer__section-content">
             <ul class="footer__list">
-                <li><span class="footer__icon">📞</span> +52 123 123 123</li>
-                <li><span class="footer__icon">📧</span> correogmail.com</li>
+                <li *ngFor="let contact of contacts">
+                    <span class="footer__icon">{{ contact.icon }}</span>
+                    {{ contact.text }}
+                </li>
             </ul>
         </div>
     </section>
@@ -60,14 +54,9 @@
             <h3>Social</h3>
         </div>
         <div class="footer__section-content footer__icons">
-            <a href="#" class="footer__icon">🌐</a>
-            <a href="#" class="footer__icon">🐦</a>
-            <a href="#" class="footer__icon">📘</a>
-            <a href="#" class="footer__icon">📸</a>
-            <a href="#" class="footer__icon">📘</a>
-            <a href="#" class="footer__icon">📸</a>
-            <a href="#" class="footer__icon">📘</a>
-            <a href="#" class="footer__icon">📸</a>
+            <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank" class="footer__icon">
+                <img [src]="link.icon" alt="Social Icon" />
+            </a>
         </div>
     </section>
 </footer>
