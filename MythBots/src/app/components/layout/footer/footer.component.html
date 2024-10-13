@@ -40,8 +40,8 @@
         </div>
         <div class="footer__section-content">
             <ul class="footer__list">
-                <li *ngFor="let contact of contacts">
-                    <span class="footer__icon">{{ contact.icon }}</span>
+                <li *ngFor="let contact of contacts" class="footer__contact">
+                    <span class="footer__icon"><i [class]="contact.icon"></i></span>
                     {{ contact.text }}
                 </li>
             </ul>
@@ -54,9 +54,11 @@
             <h3>Social</h3>
         </div>
         <div class="footer__section-content footer__icons">
-            <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank" class="footer__icon">
-                <img [src]="link.icon" alt="Social Icon" />
+            <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank" class="footer__icon"
+                [attr.aria-label]="link.name" [style.background-color]="link.color" [attr.data-tooltip]="link.name">
+                <i [class]="link.icon"></i>
             </a>
         </div>
     </section>
+
 </footer>
