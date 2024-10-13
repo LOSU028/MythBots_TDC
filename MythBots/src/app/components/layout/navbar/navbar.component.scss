@@ -1,4 +1,5 @@
 @import '../../../../variables';
+@import '../../../../global-styles';
 
 .navbar {
     display: flex;
@@ -8,6 +9,17 @@
     gap: 10px;
     background: $color-primary;
     box-shadow: 4px 10px 25px rgba(0, 0, 0, 0.25);
+
+    // Ocultar elementos en tablets y móviles
+    @media (max-width: $breakpoint-tablet) {
+
+        .navbar-frame__menu,
+        .navbar-logo,
+        .navbar-separator,
+        .navbar-account {
+            display: none;
+        }
+    }
 }
 
 .navbar-frame {
@@ -22,57 +34,80 @@
     display: flex;
     align-items: center;
     padding-right: 30px;
-    gap: 20px;
-    flex-grow: 1; // Permite que el menú use el espacio disponible
+    gap: 30px;
+    flex-grow: 1;
+}
+
+.navbar-item__link {
+    position: relative;
+    text-decoration: none;
+    color: $color-white;
+    transition: color 0.3s;
+    font-size: $font-title-size;
+    font-weight: 500;
+
+    &:hover {
+        color: lighten($color-white, 10%);
+    }
+
+    // Animación de subrayado en hover
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 2px;
+        background-color: $color-white;
+        transition: width 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
 }
 
 .navbar-logo {
     width: 56px;
     height: 56px;
     border-radius: 100px;
-    background: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.m.wikipedia.org%2Fwiki%2FArchivo%3AImage-not-found.png&psig=AOvVaw1W56VVF4dc25TJUrrpN6YV&ust=1728328373491000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJia4Ii7-ogDFQAAAAAdAAAAABAE') lightgray 50% / cover no-repeat; // Agrega la ruta de la imagen
+    background: url('https://via.placeholder.com/56') lightgray 50% / cover no-repeat;
 }
 
 .navbar-separator {
     width: 2px;
     height: 60px;
-    background: $color-white; // Color de la línea usando variable global
+    background: $color-white;
     box-shadow: 4px 10px 40px rgba(0, 0, 0, 0.25);
     margin: 20px;
-}
-
-.navbar-item {
-    display: flex;
-    height: 56px;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    color: $color-white;                    // Color del texto usando variable global
-
-    &__text {
-        text-align: left;                   // Alinear texto a la izquierda
-        font-family: 'Akshar', sans-serif;  // Asegúrate de importar la fuente
-        font-size: 18px;                    // Tamaño de fuente específico
-        font-weight: 500;
-        line-height: normal;
-    }
-}
-
-.navbar-search {
-    margin-left: auto; // Mueve el buscador a la derecha
-
-    input {
-        padding: 8px;
-        border-radius: 4px;
-        border: none;
-        width: 200px; // Ancho fijo para el buscador
-    }
 }
 
 .navbar-account {
     width: 62px;
     height: 62px;
     border-radius: 100px;
-    background: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.m.wikipedia.org%2Fwiki%2FArchivo%3AImage-not-found.png&psig=AOvVaw1W56VVF4dc25TJUrrpN6YV&ust=1728328373491000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJia4Ii7-ogDFQAAAAAdAAAAABAE') lightgray 50% / cover no-repeat; // Agrega la ruta de la imagen
+    background: url('https://via.placeholder.com/62') lightgray 50% / cover no-repeat;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; // Evita desplazamiento horizontal
+}
+
+//Hamburgesa
+.navbar-hamburger {
+    display: none; // Oculto por defecto
+
+    @media (max-width: $breakpoint-tablet) {
+        display: block;
+        cursor: pointer;
+        font-size: 28px;
+        color: $color-white;
+    }
+
+    &:hover {
+        color: lighten($color-white, 10%);
+    }
 }

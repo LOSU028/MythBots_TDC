@@ -2,22 +2,25 @@
     <div class="navbar-frame">
         <!-- Logo de la empresa -->
         <div class="navbar-logo"></div>
-        <!-- Linea -->
+
+        <!-- Línea separadora -->
         <div class="navbar-separator"></div>
 
-        <!-- Contenido-->
+        <!-- Contenido del menú -->
         <div class="navbar-frame__menu">
             <div class="navbar-item" *ngFor="let item of menuItems">
-                <span class="navbar-item__text">{{ item }}</span>
+                <a class="navbar-item__link" [routerLink]="item.path">
+                    <span class="navbar-item__text">{{ item.title }}</span>
+                </a>
             </div>
         </div>
 
-        <!-- Buscador  -->
-        <!--<div class="navbar-search">
-            <input type="text" placeholder="Buscar..." />
-        </div>-->
-
         <!-- Icono de cuenta de usuario -->
         <div class="navbar-account"></div>
+
+        <!-- Icono de hamburguesa para dispositivos pequeños -->
+        <div class="navbar-hamburger" (click)="onHamburgerClick()">
+            <i class="fas fa-bars"></i> <!-- Ícono de Font Awesome -->
+        </div>
     </div>
 </nav>
