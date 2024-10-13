@@ -38,21 +38,20 @@
         }
     }
 
-    //Logotipo
+    // Logotipo
     .footer__logo-image {
         width: 120px;
         height: auto;
         margin-bottom: 20px;
     }
 
-    //Eslogan
+    // Eslogan
     .footer__slogan {
         max-width: 280px;
         word-wrap: break-word;
     }
 
-    //Lista Seccion 2-3
-    /*
+    // Lista con animación de subrayado
     .footer__list {
         list-style: none;
         padding: 0;
@@ -61,34 +60,31 @@
             display: flex;
             align-items: center;
             margin-bottom: 10px;
+            position: relative;
+            overflow: hidden; // Para evitar que la línea sobresalga
+            cursor: pointer;
 
-            span {
-                margin-right: 10px;
+            // Efecto subrayado al pasar el mouse
+            &::after {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 2px;
+                background-color: $color-secondary;
+                bottom: 0;
+                left: 0;
+                transition: width 0.3s;
             }
-        }
-    }
-    */
 
-    //Lista Sección 4: Contactos
-    .footer__list {
-        list-style: none;
-        padding: 0;
-
-        li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            transition: background-color 0.3s;
-
-            &:hover {
-                background-color: rgba(255, 255, 255, 0.1);
-                border-radius: 5px;
+            &:hover::after {
+                width: 100%;
             }
 
             span {
                 margin-right: 10px;
                 display: flex;
                 align-items: center;
+                transition: color 0.3s;
 
                 &:hover {
                     color: $color-secondary;
@@ -97,11 +93,23 @@
         }
     }
 
-    //Iconos de Redes Sociales
+    // Iconos de Redes Sociales
     .footer__icons {
         display: flex;
         gap: 20px;
         flex-wrap: wrap;
+    }
+
+    // Eliminar efecto circular en Contactos
+    .footer__contact .footer__icon {
+        transition: none;
+        box-shadow: none;
+        transform: none;
+
+        &:hover {
+            transform: none;
+            box-shadow: none;
+        }
     }
 
     .footer__icon {

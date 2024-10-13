@@ -24,9 +24,9 @@ export class FooterComponent {
 
   //Apartado de Contactos
   contacts = [
-    { icon: 'fab fa-whatsapp', text: '+52 123 123 123' },
-    { icon: 'fas fa-envelope', text: 'correogmail.com' }
-  ];
+    { icon: 'fab fa-whatsapp', text: '+52 123 123 123', url: 'https://wa.me/52123123123' },
+    { icon: 'fas fa-envelope', text: 'correogmail.com', url: 'mailto:correogmail.com' },
+];
 
   //Apartado de Redes sociales
   socialLinks = [
