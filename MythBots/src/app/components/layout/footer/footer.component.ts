@@ -17,15 +17,23 @@ export class FooterComponent {
                     quis nostrud exercitation ullamco laboris.`;
 
   //Apartado de Historia
-  historyItems: string[] = ['Acerca de', 'Historia', 'Quienes somos'];
+  historyItems= [
+    { text: 'Acerca de', link: '/acerca-de'},
+    { text: 'Historia', link: '/Historia'},
+    { text: 'Quienes Somos', link: '/quienes-somos'}
+  ];
 
   //Apartado de Servicios
-  serviceItems: string[] = ['Productos', 'Servicios', 'Cursos'];
+  serviceItems = [
+    { text: 'Productos', link: '/productos' },
+    { text: 'Servicios', link: '/servicios' },
+    { text: 'Cursos', link: '/cursos' }
+  ];
 
   //Apartado de Contactos
   contacts = [
     { icon: 'fab fa-whatsapp', text: '+52 123 123 123', url: 'https://wa.me/52123123123' },
-    { icon: 'fas fa-envelope', text: 'correogmail.com', url: 'mailto:correogmail.com' },
+    { icon: 'fas fa-envelope', text: 'Mythbots@example.com', url: 'mailto:correo@example.com' },
 ];
 
   //Apartado de Redes sociales
