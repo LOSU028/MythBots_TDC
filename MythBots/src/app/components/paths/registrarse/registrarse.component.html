@@ -1,1 +1,21 @@
-<p>registrarse works!</p>
+<div>
+    <h1>Registrate</h1>
+    <form [formGroup]="form" (submit)="registrar()">
+        <div>
+            <label for="Username">Username:</label>
+            <input type="text" name="username" formControlName="username">
+        </div>
+        <div>
+            <label for="Email">E-mail:</label>
+            <input type="text" name="email" formControlName="email">
+        </div>
+        <div>
+            <label for="Password">Password:</label>
+            <input type="text" name="password" formControlName="password">
+        </div>
+        <div>
+            <button [disabled]="form.invalid">Sign Up</button>
+        </div>
+    </form>
+    <span>Already have an account? <a [routerLink]="['/login']">Login here</a></span>
+</div>
