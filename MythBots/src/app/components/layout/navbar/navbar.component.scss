@@ -1,0 +1,113 @@
+@import '../../../../variables';
+@import '../../../../global-styles';
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 5px 30px;
+    gap: 10px;
+    background: $color-primary;
+    box-shadow: 4px 10px 25px rgba(0, 0, 0, 0.25);
+
+    // Ocultar elementos en tablets y móviles
+    @media (max-width: $breakpoint-tablet) {
+
+        .navbar-frame__menu,
+        .navbar-logo,
+        .navbar-separator,
+        .navbar-account {
+            display: none;
+        }
+    }
+}
+
+.navbar-frame {
+    display: flex;
+    height: 94px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.navbar-frame__menu {
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+    gap: 30px;
+    flex-grow: 1;
+}
+
+.navbar-item__link {
+    position: relative;
+    text-decoration: none;
+    color: $color-white;
+    transition: color 0.3s;
+    font-size: $font-title-size;
+    font-weight: 500;
+
+    &:hover {
+        color: lighten($color-white, 10%);
+    }
+
+    // Animación de subrayado en hover
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 2px;
+        background-color: $color-white;
+        transition: width 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
+}
+
+.navbar-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 100px;
+    background: url('https://via.placeholder.com/56') lightgray 50% / cover no-repeat;
+}
+
+.navbar-separator {
+    width: 2px;
+    height: 60px;
+    background: $color-white;
+    box-shadow: 4px 10px 40px rgba(0, 0, 0, 0.25);
+    margin: 20px;
+}
+
+.navbar-account {
+    width: 62px;
+    height: 62px;
+    border-radius: 100px;
+    background: url('https://via.placeholder.com/62') lightgray 50% / cover no-repeat;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; // Evita desplazamiento horizontal
+}
+
+//Hamburgesa
+.navbar-hamburger {
+    display: none; // Oculto por defecto
+
+    @media (max-width: $breakpoint-tablet) {
+        display: block;
+        cursor: pointer;
+        font-size: 28px;
+        color: $color-white;
+    }
+
+    &:hover {
+        color: lighten($color-white, 10%);
+    }
+}

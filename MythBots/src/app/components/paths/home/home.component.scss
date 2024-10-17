@@ -1,0 +1,219 @@
+@import '../../../../_global-styles.scss';
+@import '../../../../_variables.scss';
+
+.base-plantilla {
+    min-width: 100%;
+    min-height: 100vh;
+    background: $background-gradient;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow-y: auto;
+
+    .seccion {
+        display: flex;
+        width: calc(100% - 50px);
+        margin: 60px auto;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+        padding: 40px;
+
+        &.impar {
+            flex-direction: row;
+
+            .impar-content {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                .impar-text {
+                    width: 50%;
+                    text-align: start;
+
+                    .titulo {
+                        font-size: 28px;
+                        color: $color-white;
+                    }
+
+                    .descripcion {
+                        font-size: 18px;
+                        text-align: justify;
+                        color: $color-white;
+                    }
+                }
+
+                .impar-imagen {
+                    width: 35%;
+                    height: 300px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        border-radius: 20px;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    }
+                }
+            }
+        }
+
+        &.par {
+            flex-direction: row-reverse;
+
+            .par-content {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                .par-text {
+                    width: 50%;
+                    text-align: end;
+
+                    .titulo {
+                        font-size: 28px;
+                        color: $color-white;
+                    }
+
+                    .descripcion {
+                        font-size: 18px;
+                        text-align: justify;
+                        color: $color-white;
+                    }
+                }
+
+                .par-imagen {
+                    width: 35%;
+                    height: 300px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        border-radius: 20px;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    }
+                }
+            }
+        }
+
+        //Botons
+        .boton {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            outline: none;
+            border: 0;
+            background: transparent;
+            padding: 0;
+            font-size: inherit;
+            font-family: inherit;
+
+            &.learn-more {
+                width: 12rem;
+                height: auto;
+
+                .circulo {
+                    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+                    box-shadow: 0 0 5px 1px white;
+                    position: relative;
+                    display: block;
+                    width: 3rem;
+                    height: 3rem;
+                    background: $color-secondary;
+                    border-radius: 1.625rem;
+                }
+
+                .icono {
+                    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                    background: $color-white;
+
+                    &.flecha {
+                        left: 0.625rem;
+                        width: 1.125rem;
+                        height: 0.125rem;
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            top: -0.29rem;
+                            right: 0.0625rem;
+                            width: 0.625rem;
+                            height: 0.625rem;
+                            border-top: 0.125rem solid $color-white;
+                            border-right: 0.125rem solid $color-white;
+                            transform: rotate(45deg);
+                        }
+                    }
+                }
+
+                .texto-boton {
+                    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    padding: 0.75rem 0;
+                    margin: 0 0 0 1.85rem;
+                    color: rgba(255, 255, 255, 0.493);
+                    font-weight: 700;
+                    line-height: 1.6;
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+
+                &:hover {
+                    .circulo {
+                        width: 100%;
+                        box-shadow: 0 0 10px 2px white;
+                    }
+
+                    .texto-boton {
+                        transform: translate(-1.7rem, 0);
+                        color: $color-white;
+                    }
+
+                    .icono.flecha {
+                        transform: translate(8.7rem, 0);
+                    }
+                }
+
+                &:active {
+                    .circulo {
+                        transform: scale(0.9);
+                        box-shadow: 0 0 5px 0.5px white;
+                    }
+
+                    .icono.flecha {
+                        transform: translate(9.5rem, 0);
+                    }
+
+                    .texto-boton {
+                        color: rgba(255, 255, 255, 0.459);
+                    }
+                }
+            }
+
+            &.boton-naranja {
+                .circulo {
+                    background: $color-tertiary;
+                }
+            }
+
+            &.boton-morado {
+                .circulo {
+                    background: $color-primary;
+                }
+            }
+        }
+    }
+}

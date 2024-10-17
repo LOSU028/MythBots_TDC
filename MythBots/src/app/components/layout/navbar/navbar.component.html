@@ -1,1 +1,26 @@
-<p>navbar works!</p>
+<nav class="navbar">
+    <div class="navbar-frame">
+        <!-- Logo de la empresa -->
+        <div class="navbar-logo"></div>
+
+        <!-- Línea separadora -->
+        <div class="navbar-separator"></div>
+
+        <!-- Contenido del menú -->
+        <div class="navbar-frame__menu">
+            <div class="navbar-item" *ngFor="let item of menuItems">
+                <a class="navbar-item__link" [routerLink]="item.path">
+                    <span class="navbar-item__text">{{ item.title }}</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Icono de cuenta de usuario -->
+        <div class="navbar-account"></div>
+
+        <!-- Icono de hamburguesa para dispositivos pequeños -->
+        <div class="navbar-hamburger" (click)="onHamburgerClick()">
+            <i class="fas fa-bars"></i> <!-- Ícono de Font Awesome -->
+        </div>
+    </div>
+</nav>
