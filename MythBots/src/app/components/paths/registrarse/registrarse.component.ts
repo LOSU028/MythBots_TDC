@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-registrarse',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, RouterLink, ],
+  imports: [FormsModule, ReactiveFormsModule, RouterLink],
   templateUrl: './registrarse.component.html',
   styleUrl: './registrarse.component.scss'
 })
