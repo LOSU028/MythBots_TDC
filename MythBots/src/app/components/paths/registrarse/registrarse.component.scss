@@ -1,4 +1,95 @@
+@import '../../../../_variables.scss';
+@import '../../../..//global-styles';
+
 input.ng-dirty.ng-invalid{
     border: solid 1px red;
     background-color: pink;
+}
+.register-desc{
+    margin-left: 80px;
+    width: 50%;
+}
+.container {
+    background-image: linear-gradient(to top, $color-primary-2, $color-primary-5);
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.register-container {
+    width: 100%; 
+    height: 0;
+    border-top: 800px solid $color-primary-5;
+    border-left: 900px solid transparent;
+    justify-content: center;
+}
+
+.register-form{
+    top:35%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    margin-right: 20px;
+    align-items: center;
+}
+
+h1{
+    color: white;
+    font-size: $font-title-size;
+    font-family: $font-family-primary;
+}
+
+.register-button {
+    width: 100%;
+    background-image: linear-gradient(to bottom, $color-primary-6, $color-primary-1);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 18px;
+  }
+
+  .input-group{
+    margin-bottom: 18px;
+  }
+
+  .register-input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+  }
+
+  ::placeholder{
+    color: white;
+  }
+
+  .register-text{
+    font-size: $font-body-size;
+    font-family: $font-family-primary;
+    color: white;
+  }
+
+  .register-title {
+    color: white;
+    font-size: $font-title-size;
+    font-family: $font-family-primary;
+    margin: 0;
+    padding-bottom: 10px;
+    z-index: 1;
+}
+
+.description {
+    color: white;
+    font-size: $font-body-size;
+    font-family: $font-family-primary;
+    text-align: center;
+    z-index: 1;
+    margin: 0;
 }

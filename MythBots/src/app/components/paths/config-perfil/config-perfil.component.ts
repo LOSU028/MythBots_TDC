@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-config-perfil',
   templateUrl: './config-perfil.component.html',
   styleUrls: ['./config-perfil.component.scss'],
   standalone: true,
-  imports: [FormsModule, CommonModule]
+  imports: [FormsModule, CommonModule, RouterLink]
 })
 export class ConfigPerfilComponent {
   activeTab: string = 'perfil'; user = {

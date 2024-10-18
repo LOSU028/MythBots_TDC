@@ -1,17 +1,23 @@
-<div>
-    <h1>Login</h1>
-    <form [formGroup]="loginForm" (submit)="login()">
-        <div>
-            <label for="Username">Username:</label>
-            <input type="text" name="username" formControlName="username">
+<div class="container">
+    <div class="login-container">
+        <div class="login-form">
+        <h1>Login</h1>
+            <form [formGroup]="loginForm" (submit)="login()">
+                <div class="input-group">
+                    <input class="login-input" type="text" name="username" formControlName="username" placeholder="Username">
+                </div>
+                <div class="input-group">
+                    <input class="login-input" type="text" name="password" formControlName="password" placeholder="Password">
+                </div>
+                <div>
+                    <button class="send-button">Login</button>
+                </div>
+            </form>
+            <p class="login-text">Don't have an account? <a [routerLink]="['/register']" style="color: black">Sign up</a></p>
         </div>
-        <div>
-            <label for="Password">Password:</label>
-            <input type="text" name="password" formControlName="password">
-        </div>
-        <div>
-            <button>Login</button>
-        </div>
-    </form>
-    <span>Don't have an account? <a [routerLink]="['/register']">Sign up</a></span>
+    </div>
+    <div>
+        <h2 class="login-title">Welcome Back!<br></h2>
+        <p class="description">A place where you can explore your creativity and imagination</p>
+    </div>    
 </div>

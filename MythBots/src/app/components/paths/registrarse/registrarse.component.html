@@ -1,21 +1,26 @@
-<div>
-    <h1>Sign up</h1>
-    <form [formGroup]="form" (submit)="registrar()">
-        <div>
-            <label for="Username">Username:</label>
-            <input type="text" name="username" formControlName="username">
+<div class="container">
+    <div class="register-desc">
+        <h2 class="register-title">Welcome Back!<br></h2>
+        <p class="description">A place where you can explore your creativity and imagination</p>
+    </div>
+    <div class="register-container">
+        <div class="register-form">
+        <h1>Sign up</h1>
+            <form [formGroup]="form" (submit)="registrar()">
+                <div class="input-group">
+                    <input  class="register-input" type="text" name="username" formControlName="username" placeholder="Username">
+                </div>
+                <div class="input-group">
+                    <input class="register-input" type="text" name="email" formControlName="email" placeholder="Email">
+                </div>
+                <div class="input-group">
+                    <input class="register-input" type="text" name="password" formControlName="password" placeholder="Password">
+                </div>
+                <div>
+                    <button class="register-button " [disabled]="form.invalid">Sign Up</button>
+                </div>
+            </form>
+            <p class="register-text">Already have an account? <a [routerLink]="['/login']" style="color: black">Login here</a></p>
         </div>
-        <div>
-            <label for="Email">E-mail:</label>
-            <input type="text" name="email" formControlName="email">
-        </div>
-        <div>
-            <label for="Password">Password:</label>
-            <input type="text" name="password" formControlName="password">
-        </div>
-        <div>
-            <button [disabled]="form.invalid">Sign Up</button>
-        </div>
-    </form>
-    <span>Already have an account? <a [routerLink]="['/login']">Login here</a></span>
+    </div>
 </div>
