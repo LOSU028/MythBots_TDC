@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
+  //footer_image
+  footerLogotipo = '/resources/mythbots_logo.png';
 
   //Apartado de Eslogan
   slogan: string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
