@@ -10,6 +10,10 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  //Logotipo
+  logotipo = '/resources/mythbots_logo.png';
+  logotipoRuta = '/home'
+
   // Definición de los elementos del menú
   menuItems = [
     { title: '3D Print', path: '/3d-print' },
