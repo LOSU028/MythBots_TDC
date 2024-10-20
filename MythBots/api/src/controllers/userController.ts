@@ -12,32 +12,34 @@ interface UserInterface {
     password: string;
 }
 
-const registerUser = async (req: Request, res: Response) => {
-    try {
-        const { username, email, password }: UserInterface = req.body;
-
-        console.log(`Registrando usuario: ${username}, Email: ${email}, Password: ${password}`);
+const registerUser = async (req: Request, res: Response, next: NextFunction) => {
+        const { username, email, password } = req.body;
+        if( !username || !email || !password){
+            return res.status(ResponseStatus.BAD_REQUEST).send('All fields are required');
+        }
 
         let user = await User.findOne({ email });
         if (user) {
-            console.log(`El usuario con el email ${email} ya existe.`);
-            return res.status(ResponseStatus.BAD_REQUEST).json({ msg: 'El usuario ya existe' });
+            return res.status(ResponseStatus.BAD_REQUEST).json({ error: 'User with that email already exists'});
         }
 
-        user = new User({
-            username,
-            email,
-            password 
-        });
+        try{
+            user = new User( {
+                username,
+                email,
+                password 
+            });
+    
+            await user.save();
 
-        await user.save();
-        console.log(`Usuario ${username} creado exitosamente.`);
-        res.status(ResponseStatus.CREATED).send("Usuario creado correctamente");
-        //res.redirect('/login');
-    } catch (err) {
-        console.error('Error durante el registro:', err);
-        res.status(ResponseStatus.INTERNAL_SERVER_ERROR).send('Error del servidor');
-    }
+            return res.json({
+                status: ResponseStatus.CREATED,
+                message: 'User created',
+                data:{_id: user._id, username: user.username, email: user.email }
+            })
+        }catch(error){
+            return res.status(ResponseStatus.INTERNAL_SERVER_ERROR).send('Something went wrong'); 
+        }
 };
 
 const loginUser = async(req: Request, res: Response, next: NextFunction) => {

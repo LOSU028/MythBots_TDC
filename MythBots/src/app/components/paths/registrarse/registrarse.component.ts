@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { RouterLink } from '@angular/router';
-
+import { Router,RouterLink } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
+ 
 @Component({
   selector: 'app-registrarse',
   standalone: true,
@@ -11,10 +12,12 @@ import { RouterLink } from '@angular/router';
 })
 export class RegistrarseComponent {
   form: FormGroup;
+  authService = inject(AuthService)
+  router = inject(Router);
 
   constructor(formBuilder: FormBuilder){
     this.form = formBuilder.group({
-      username:['', [Validators.required, Validators.minLength(8)]],
+      username:['', [Validators.required, Validators.minLength(4)]],
       email: ['',[Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.pattern('((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]]
     })
@@ -22,7 +25,13 @@ export class RegistrarseComponent {
 
   registrar(){
     if (this.form.valid){
-      console.log('Registrando usuario...')
+      console.log('Registrando...')
+      this.authService.register(this.form.value).subscribe({
+        next:(response) =>{
+          console.log(response);
+          this.router.navigate(['login']);
+        }
+      })
     }
   }
 }
