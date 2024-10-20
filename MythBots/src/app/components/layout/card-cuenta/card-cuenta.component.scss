@@ -1,0 +1,130 @@
+@import '../../../../variables';
+@import '../../../../global-styles';
+
+// Reset específico para márgenes de <p> en este componente
+.reset-margins p {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+// Card completa
+.card-cuenta {
+    width: auto;                        // Ajuste para que se adapte al contenido
+    max-width: 800px;                   // Límite máximo del ancho
+    background-color: $color-gray-2;
+    border-radius: 10px;
+    padding: 15px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    z-index: 1000;
+    transition: all 0.3s ease-out;
+
+    // Eliminar margen inferior extra
+    margin-bottom: 0 !important;
+
+    &:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+    }
+
+    // Sección del avatar y nombre de usuario
+    .username {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 10px 5px;
+        max-width: 100%;
+
+        // Avatar circular
+        .perfil {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: $color-gray-3;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;             // Evita que el avatar se reduzca con el contenido
+        }
+
+        // Nombre del usuario
+        .username-text {
+            font-weight: bold;
+            font-size: 20px;
+            color: $color-primary-1;
+            word-wrap: break-word;      // Ajuste para textos largos
+            overflow: hidden;
+            text-overflow: ellipsis;    // Añade '...' en caso de que sobrepase el contenedor
+            white-space: nowrap;        // Evita que el texto se parta en varias líneas
+            max-width: 80%;             // Limita el espacio ocupado por el nombre
+        }
+    }
+
+    // Línea separadora
+    .separator {
+        border-top: 1.5px solid $color-gray-6;
+        margin: 10px 0;
+    }
+
+    // Lista de opciones
+    .list {
+        list-style-type: none;
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        // Elementos de cada opción
+        .element {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            color: $color-gray-6;
+            transition: all 0.3s ease-out;
+
+            // Ícono de opción
+            i {
+                font-size: 19px;
+                transition: all 0.3s ease-out;
+            }
+
+            // Texto de la opción
+            .label {
+                font-weight: 600;
+                color: $color-primary-1;
+            }
+
+            // Hover: cambio de color de fondo y texto
+            &:hover {
+                background-color: $color-blue;
+                color: #ffffff;
+                transform: translate(1px, -1px);
+            }
+
+            // Efecto al hacer clic
+            &:active {
+                transform: scale(0.99);
+            }
+
+            &:hover i {
+                color: #ffffff;
+            }
+        }
+
+        // Opción de cerrar sesión
+        .cerrar-sesion {
+            margin-top: 0;
+
+            // Hover específico para cerrar sesión
+            &:hover {
+                background-color: $color-red;
+            }
+        }
+    }
+}

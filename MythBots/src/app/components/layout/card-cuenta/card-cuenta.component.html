@@ -1,1 +1,40 @@
-<p>card-cuenta works!</p>
+<article class="card-cuenta reset-margins">
+    <!-- Sección de usuario con avatar y nombre -->
+    <section class="username">
+        <!-- Avatar del usuario -->
+        <figure class="perfil" [style.background-image]="'url(resources/mythbots_logo.png)'"></figure>
+        <!-- Nombre del usuario -->
+        <p class="username-text">UsuarioUsuarioUsuarioUsuarioUsuario</p>
+    </section>
+
+    <!-- Separador visual -->
+    <div class="separator"></div>
+
+    <!-- Lista de acciones -->
+    <ul class="list">
+        <li class="element">
+            <!-- Ícono del perfil -->
+            <i class="fa-solid fa-user"></i>
+            <!-- Texto: Perfil -->
+            <p class="label">Perfil</p>
+        </li>
+        <li class="element">
+            <i class="fa-solid fa-book"></i>
+            <p class="label">Mis Cursos</p>
+        </li>
+        <li class="element">
+            <i class="fa-solid fa-key"></i>
+            <p class="label">Mis Licencias</p>
+        </li>
+    </ul>
+
+    <div class="separator"></div>
+
+    <!-- Opción de cerrar sesión -->
+    <ul class="list">
+        <li class="element cerrar-sesion">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <p class="label">Cerrar Sesión</p>
+        </li>
+    </ul>
+</article>
