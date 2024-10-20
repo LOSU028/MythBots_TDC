@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-card-cuenta',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './card-cuenta.component.html',
   styleUrl: './card-cuenta.component.scss'
 })
@@ -17,13 +18,25 @@ export class CardCuentaComponent {
   };
 
   // Opciones del menú
-  admin = { icono: 'fa-solid fa-shield' ,texto:'Panel Administracion'};
+  admin = { icono: 'fa-solid fa-shield', texto: 'Panel Administracion', ruta:'/' };
 
   // Opciones del menú
   opciones = [
-    { icono: 'fa-solid fa-user', texto: 'Perfil' },
-    { icono: 'fa-solid fa-book', texto: 'Mis Cursos' },
-    { icono: 'fa-solid fa-key', texto: 'Mis Licencias' }
+    {
+      icono: 'fa-solid fa-user',
+      texto: 'Perfil',
+      ruta: '/'
+    },
+    {
+      icono: 'fa-solid fa-book',
+      texto: 'Mis Cursos',
+      ruta: '/'
+    },
+    {
+      icono: 'fa-solid fa-key',
+      texto: 'Mis Licencias',
+      ruta: '/'
+    }
   ];
 
   //opcin de cerrar sesion
