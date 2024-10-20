@@ -22,7 +22,10 @@
         </div>
 
         <!-- Icono de cuenta de usuario -->
-        <div class="navbar-account"></div>
+        <div class="navbar-account" (click)="toogleCardCuenta()"></div>
+
+        <!-- componente card cuenta si esta visible -->
+        <app-card-cuenta *ngIf="isCardVisible()"></app-card-cuenta>
 
         <!-- Icono de hamburguesa para dispositivos pequeños -->
         <div class="navbar-hamburger" (click)="onHamburgerClick()">
