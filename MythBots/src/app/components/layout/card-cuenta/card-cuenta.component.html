@@ -2,29 +2,32 @@
     <!-- Sección de usuario con avatar y nombre -->
     <section class="username">
         <!-- Avatar del usuario -->
-        <figure class="perfil" [style.background-image]="'url(resources/mythbots_logo.png)'"></figure>
+        <figure class="perfil" [style.background-image]="'url(' + usuario.fotoPerfil + ')'"></figure>
         <!-- Nombre del usuario -->
-        <p class="username-text">UsuarioUsuarioUsuarioUsuarioUsuario</p>
+        <p class="username-text">{{ usuario.nombre }}</p>
     </section>
+
+    <!-- Separador visual -->
+    <div class="separator" *ngIf="isAdmin"></div>
+
+    <!-- Opcion Admin -->
+    <ul class="list" *ngIf="isAdmin">
+        <li class="element">
+            <i [class]="admin.icono"></i>
+            <p class="label">{{ admin.texto }}</p>
+        </li>
+    </ul>
 
     <!-- Separador visual -->
     <div class="separator"></div>
 
     <!-- Lista de acciones -->
     <ul class="list">
-        <li class="element">
-            <!-- Ícono del perfil -->
-            <i class="fa-solid fa-user"></i>
-            <!-- Texto: Perfil -->
-            <p class="label">Perfil</p>
-        </li>
-        <li class="element">
-            <i class="fa-solid fa-book"></i>
-            <p class="label">Mis Cursos</p>
-        </li>
-        <li class="element">
-            <i class="fa-solid fa-key"></i>
-            <p class="label">Mis Licencias</p>
+        <li class="element" *ngFor="let opcion of opciones">
+            <!-- Ícono -->
+            <i [class]="opcion.icono"></i>
+            <!-- Texto -->
+            <p class="label">{{ opcion.texto }}</p>
         </li>
     </ul>
 
@@ -33,8 +36,8 @@
     <!-- Opción de cerrar sesión -->
     <ul class="list">
         <li class="element cerrar-sesion">
-            <i class="fa-solid fa-right-from-bracket"></i>
-            <p class="label">Cerrar Sesión</p>
+            <i [class]="cerrarSesion.icono"></i>
+            <p class="label">{{ cerrarSesion.texto }}</p>
         </li>
     </ul>
 </article>
