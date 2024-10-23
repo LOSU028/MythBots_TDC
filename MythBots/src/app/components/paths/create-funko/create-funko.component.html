@@ -2,19 +2,19 @@
     <!-- Banner -->
     <section class="banner">
         <div class="banner-content">
-            <h1 class="title">Título</h1>
-            <ul class="instructions">
+            <h1 class="title">Crea el tuyo!</h1>
+            <ul class="instructions reset-margins">
                 <li>Selecciona el tipo de funko que deseas crear.</li>
                 <li>Personaliza los detalles de tu funko.</li>
                 <li>Confirma y añade al carrito.</li>
             </ul>
             <div class="banner-buttons">
-                <button class="btn" routerLink="/create-funko#trabajos">Ver trabajos</button>
+                <button class="btn btn-secondary" routerLink="/create-funko#trabajos">Ver trabajos</button>
                 <button class="btn btn-primary" routerLink="/create-funko#crear">Crear Funko</button>
             </div>
         </div>
         <figure class="banner-image">
-            <img src="/resources/CreateFunko.png" alt="Funko Banner" />
+            <img src="/resources/home/CreateFunko.png" alt="Funko Banner" />
         </figure>
     </section>
 
@@ -26,6 +26,10 @@
             <div class="card">Imagen</div>
             <div class="card">Imagen</div>
             <div class="card">Imagen</div>
+            <div class="card">Imagen</div>
+            <div class="card">Imagen</div>
+            <div class="card">Imagen</div>
+            <div class="card">Imagen</div>
         </div>
     </section>
 
@@ -33,32 +37,14 @@
     <section class="select-funko" id="crear">
         <h2>Crear Funko</h2>
         <div class="options">
-            <div class="option" id="individual" (click)="('individual')">
+            <div class="option" id="individual">
+                <img src="/resources/home/individual.png" alt="Individual Funko" />
                 <p>Individual</p>
             </div>
-            <div class="option" id="en-pareja" (click)="('en-pareja')">
+            <div class="option" id="en-pareja">
+                <img src="/resources/home/pareja.png" alt="Funko en Pareja" />
                 <p>En Pareja</p>
             </div>
         </div>
+        <button class="btn btn-continue" routerLink="/customize">Continuar</button>
     </section>
-
-    <!-- Sección posterior al seleccionar -->
-    <section class="funko-customizer">
-        <div class="preview">
-            <h3>Previsualización 3D</h3>
-            <div class="model-viewer">
-                <p>Modelo 3D del Funko</p>
-            </div>
-        </div>
-
-        <div class="styles">
-            <h3>Personaliza tu Funko</h3>
-            <div class="steps">
-                <div class="step">Estilo 1</div>
-                <div class="step">Estilo 2</div>
-                <div class="step">Estilo 3</div>
-                <div class="step">Estilo 4</div>
-            </div>
-        </div>
-    </section>
-</article>
