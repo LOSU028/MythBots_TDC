@@ -4,25 +4,33 @@
     .banner {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         background: linear-gradient(to right, #42006B, #E64CAB);
         padding: 2rem;
         border-radius: 10px;
         color: white;
+        position: relative;
 
         .banner-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
             max-width: 50%;
 
             h1 {
+                align-self: flex-start;
                 font-size: 2.5rem;
             }
 
             .instructions {
+                margin-top: 2rem;
+                counter-reset: step;
                 list-style-type: none;
                 padding: 0;
 
                 li {
-                    margin-bottom: 0.5rem;
+                    margin-bottom: 1rem;
                     display: flex;
                     align-items: center;
 
@@ -32,25 +40,28 @@
                         background-color: #ff6b00;
                         color: white;
                         border-radius: 50%;
-                        display: inline-block;
-                        width: 1.5rem;
-                        height: 1.5rem;
+                        width: 2rem;
+                        height: 2rem;
                         text-align: center;
-                        margin-right: 0.5rem;
+                        margin-right: 1rem;
                     }
                 }
             }
 
             .banner-buttons {
-                margin-top: 1rem;
+                margin-top: auto;
+                display: flex;
+                gap: 1rem;
 
                 .btn {
-                    margin-right: 0.5rem;
+                    padding: 0.5rem 1rem;
+                    border: 1px solid black;
+                    color: white;
+                    background-color: transparent;
                 }
 
                 .btn-primary {
                     background-color: #ff6b00;
-                    color: white;
                 }
             }
         }
@@ -81,20 +92,16 @@
                 height: 150px;
                 background-color: #ddd;
                 border-radius: 10px;
-                flex: 0 0 auto;
             }
         }
     }
 
     .select-funko {
         margin-top: 2rem;
-        text-align: center;
 
         .options {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
+            justify-content: space-around;
 
             .option {
                 width: 150px;
@@ -105,18 +112,17 @@
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
-                transition: border 0.3s;
+
+                p {
+                    margin-top: 1rem;
+                    font-weight: bold;
+                }
 
                 &:hover,
                 &.selected {
                     border: 3px solid #ff6b00;
                 }
             }
-        }
-
-        .btn-continue {
-            background-color: #1db954;
-            color: white;
         }
     }
 
@@ -147,15 +153,15 @@
 
             .steps {
                 display: flex;
-                flex-direction: column;
+                flex-wrap: wrap;
                 gap: 1rem;
 
                 .step {
+                    flex: 1 1 calc(25% - 1rem);
                     padding: 1rem;
                     background-color: #ddd;
                     border-radius: 10px;
                     text-align: center;
-                    cursor: pointer;
                     transition: background 0.3s;
 
                     &:hover {
