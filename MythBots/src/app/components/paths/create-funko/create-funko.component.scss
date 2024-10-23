@@ -1,0 +1,175 @@
+.create-funko-page {
+    padding: 2rem;
+
+    .banner {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        background: linear-gradient(to right, #42006B, #E64CAB);
+        padding: 2rem;
+        border-radius: 10px;
+        color: white;
+        position: relative;
+
+        .banner-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            max-width: 50%;
+
+            h1 {
+                align-self: flex-start;
+                font-size: 2.5rem;
+            }
+
+            .instructions {
+                margin-top: 2rem;
+                counter-reset: step;
+                list-style-type: none;
+                padding: 0;
+
+                li {
+                    margin-bottom: 1rem;
+                    display: flex;
+                    align-items: center;
+
+                    &:before {
+                        content: counter(step);
+                        counter-increment: step;
+                        background-color: #ff6b00;
+                        color: white;
+                        border-radius: 50%;
+                        width: 2rem;
+                        height: 2rem;
+                        text-align: center;
+                        margin-right: 1rem;
+                    }
+                }
+            }
+
+            .banner-buttons {
+                margin-top: auto;
+                display: flex;
+                gap: 1rem;
+
+                .btn {
+                    padding: 0.5rem 1rem;
+                    border: 1px solid black;
+                    color: white;
+                    background-color: transparent;
+                }
+
+                .btn-primary {
+                    background-color: #ff6b00;
+                }
+            }
+        }
+
+        .banner-image {
+            img {
+                max-width: 300px;
+                border-radius: 10px;
+            }
+        }
+    }
+
+    .carousel {
+        margin-top: 2rem;
+
+        h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+
+            .card {
+                min-width: 200px;
+                height: 150px;
+                background-color: #ddd;
+                border-radius: 10px;
+            }
+        }
+    }
+
+    .select-funko {
+        margin-top: 2rem;
+
+        .options {
+            display: flex;
+            justify-content: space-around;
+
+            .option {
+                width: 150px;
+                height: 150px;
+                background-color: #eee;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+
+                p {
+                    margin-top: 1rem;
+                    font-weight: bold;
+                }
+
+                &:hover,
+                &.selected {
+                    border: 3px solid #ff6b00;
+                }
+            }
+        }
+    }
+
+    .funko-customizer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+
+        .preview {
+            width: 50%;
+            text-align: center;
+
+            .model-viewer {
+                width: 100%;
+                height: 300px;
+                background-color: #f0f0f0;
+                border-radius: 10px;
+            }
+        }
+
+        .styles {
+            width: 45%;
+
+            h3 {
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            .steps {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+
+                .step {
+                    flex: 1 1 calc(25% - 1rem);
+                    padding: 1rem;
+                    background-color: #ddd;
+                    border-radius: 10px;
+                    text-align: center;
+                    transition: background 0.3s;
+
+                    &:hover {
+                        background-color: #ff6b00;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}

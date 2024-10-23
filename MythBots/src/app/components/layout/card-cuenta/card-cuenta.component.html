@@ -1,1 +1,73 @@
-<p>card-cuenta works!</p>
+<article class="card-cuenta reset-margins">
+    <ng-container *ngIf="isLoggedIn; else guestView">
+        <!-- Sección de usuario con avatar y nombre -->
+        <section class="username">
+            <!-- Avatar del usuario -->
+            <figure class="perfil" [style.background-image]="'url(' + usuario.fotoPerfil + ')'"></figure>
+            <!-- Nombre del usuario -->
+            <p class="username-text">{{ usuario.nombre }}</p>
+        </section>
+
+        <!-- Separador visual -->
+        <div class="separator" *ngIf="isAdmin"></div>
+
+        <!-- Opcion Admin -->
+        <ul class="list" *ngIf="isAdmin">
+            <li class="element">
+                <i [class]="admin.icono"></i>
+                <p class="label">{{ admin.texto }}</p>
+            </li>
+        </ul>
+
+        <!-- Separador visual -->
+        <div class="separator"></div>
+
+        <!-- Lista de acciones -->
+        <ul class="list">
+            <li class="element" *ngFor="let opcion of opciones">
+                <!-- Enlace para todos -->
+                <a [routerLink]="opcion.ruta" class="element-link">
+                    <!-- Ícono -->
+                    <i [class]="opcion.icono"></i>
+                    <!-- Texto -->
+                    <p class="label">{{ opcion.texto }}</p>
+                </a>
+            </li>
+        </ul>
+
+        <!-- Separador visual -->
+        <div class="separator"></div>
+
+        <!-- Opción de cerrar sesión -->
+        <ul class="list">
+            <li class="element-link cerrar-sesion">
+                <i [class]="cerrarSesion.icono"></i>
+                <p class="label">{{ cerrarSesion.texto }}</p>
+            </li>
+        </ul>
+    </ng-container>
+
+    <!-- Plantilla de usuarios no logeados (default) -->
+    <ng-template #guestView>
+        <ul class="list">
+            <li class="element">
+                <a routerLink="/login" class="element-link">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    <p class="label"> Iniciar sesión </p>
+                </a>
+            </li>
+
+            <!-- Separador visual -->
+            <div class="separator"></div>
+
+            <li class="element">
+                <a routerLink="/register" class="element-link">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <p class="label"> Registrarse </p>
+                </a>
+
+            </li>
+        </ul>
+    </ng-template>
+
+</article>

@@ -10,16 +10,16 @@ $font-body-size: 1rem;              // Texto normal
 $font-small-text-size: 0.875rem;    // Texto pequeño
 
 // Textos
-h1,
-.title {
+h1, .title {
     font-size: $font-title-size;
-    color: $color-primary;
+    font-weight: bold;
     font-family: $font-family-primary;
 }
 
 h2,
 .subtitle {
     font-size: $font-subtitle-size;
+    font-weight: bolder;
     color: $color-secondary;
     font-family: $font-family-primary;
 }

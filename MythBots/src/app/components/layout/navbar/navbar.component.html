@@ -1,7 +1,13 @@
 <nav class="navbar">
     <div class="navbar-frame">
         <!-- Logo de la empresa -->
-        <div class="navbar-logo"></div>
+        <a [routerLink]="logotipoRuta" class="navbar-logo-wrapper">
+            <img [src]="logotipo"
+                alt="Mythbots Logo"
+                class="navbar-logo"
+                onerror="this.style.background='#e0e0e0';
+                this.src='';"/>
+        </a>
 
         <!-- Línea separadora -->
         <div class="navbar-separator"></div>
@@ -16,7 +22,10 @@
         </div>
 
         <!-- Icono de cuenta de usuario -->
-        <div class="navbar-account"></div>
+        <div class="navbar-account" (click)="toogleCardCuenta()"></div>
+
+        <!-- componente card cuenta si esta visible -->
+        <app-card-cuenta *ngIf="isCardVisible()"></app-card-cuenta>
 
         <!-- Icono de hamburguesa para dispositivos pequeños -->
         <div class="navbar-hamburger" (click)="onHamburgerClick()">
