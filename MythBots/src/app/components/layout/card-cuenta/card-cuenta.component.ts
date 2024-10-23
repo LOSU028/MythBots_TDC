@@ -25,7 +25,7 @@ export class CardCuentaComponent {
     {
       icono: 'fa-solid fa-user',
       texto: 'Perfil',
-      ruta: '/'
+      ruta: '/config'
     },
     {
       icono: 'fa-solid fa-book',
@@ -41,6 +41,9 @@ export class CardCuentaComponent {
 
   //opcin de cerrar sesion
   cerrarSesion = { icono: 'fa-solid fa-right-from-bracket', texto: 'Cerrar Sesión' };
+
+  //Simulacion si el usuario inicio sesion
+  isLoggedIn = false;
 
   //Simulacion del rol admin (Un futuro se implementara middleware)
   isAdmin = false;
