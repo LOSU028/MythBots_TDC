@@ -21,7 +21,7 @@ input.ng-dirty.ng-invalid{
     width: 0%; 
     float: left;
     height: 0;
-    border-bottom: 800px solid $color-primary-5;
+    border-bottom: 1000px solid $color-primary-5;
     border-right: 800px solid transparent;
     justify-content: center;
     align-items: center;
@@ -29,7 +29,7 @@ input.ng-dirty.ng-invalid{
 }
 
 .login-form{
-    top: 260px;
+    top: 40vh;
     position: absolute;
     display: flex;
     flex-direction: column;

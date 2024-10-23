@@ -16,6 +16,9 @@
         </div>
 
         <!-- Icono de cuenta de usuario -->
+        <a class="navbar-item__link" [routerLink]="['/login']" (click)="logout()">
+            <span class="navbar-item__text">Logout</span>
+        </a>
         <div class="navbar-account"></div>
 
         <!-- Icono de hamburguesa para dispositivos pequeños -->
