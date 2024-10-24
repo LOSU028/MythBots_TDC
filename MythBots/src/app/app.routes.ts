@@ -21,7 +21,7 @@ export const routes: Routes = [
         //Ruta /create-funko
         path: 'create-funko', component: CreateFunkoComponent, children: [
             // /create-funko/customize
-            { path: 'customize', component: CustomizeFunkoComponent }
+            { path: 'customize', component: CustomizeFunkoComponent },
         ]
     },
     // /contact

@@ -24,19 +24,37 @@
         </figure>
     </section>
 
+
+
     <!-- Carrusel de proyectos -->
     <section class="carousel" id="trabajos">
         <!-- Titulo -->
         <h2>Trabajos</h2>
-        <!-- Trabajos (img) -->
+
+        <!-- Contenedor del Carrusel -->
         <div class="carousel-container">
-            <div class="card" *ngFor="let trabajo of trabajos"
-                [ngStyle]="{ 'background-color': trabajo.imageUrl ? 'transparent' : '#ccc' }">
-                <img *ngIf="trabajo.imageUrl" [src]="trabajo.imageUrl" alt="Trabajo" />
-                <span *ngIf="!trabajo.imageUrl">Imagen</span>
+            <div class="fader left"></div> <!-- Fader izquierdo -->
+            <div class="fader right"></div> <!-- Fader derecho -->
+
+            <div class="carousel-wrapper">
+                <div class="card" *ngFor="let trabajo of trabajos; let i = index"
+                    [ngStyle]="{ 'background-color': trabajo.imageUrl ? 'transparent' : '#ccc' }">
+                    <div class="card-title">{{ trabajo.title }}</div> <!-- Título del trabajo -->
+                    <img *ngIf="trabajo.imageUrl" [src]="trabajo.imageUrl" alt="Trabajo" />
+                    <span *ngIf="!trabajo.imageUrl">Imagen</span>
+                </div>
+                <div class="card" *ngFor="let trabajo of trabajos"
+                    [ngStyle]="{ 'background-color': trabajo.imageUrl ? 'transparent' : '#ccc' }">
+                    <div class="card-title">{{ trabajo.title }}</div> <!-- Título del trabajo -->
+                    <img *ngIf="trabajo.imageUrl" [src]="trabajo.imageUrl" alt="Trabajo" />
+                    <span *ngIf="!trabajo.imageUrl">Imagen</span>
+                </div>
             </div>
+
         </div>
     </section>
+
+
 
     <!-- Selección de tipo de Funko -->
     <section class="select-funko" id="crear">

@@ -28,9 +28,10 @@ export class CreateFunkoComponent {
 
   // Datos para trabajos con imagen opcional
   trabajos = [
-    { imageUrl: '/resources/work1.png' },
-    { imageUrl: '' }, //En caso de que no haya imagen
-    { imageUrl: '/resources/work2.png' }
+    { title: 'Proyecto 1', imageUrl: '/resources/work1.png' },
+    { title: 'Proyecto 2',imageUrl: '' }, //En caso de que no haya imagen
+    { title: 'Proyecto 3',imageUrl: '/resources/work2.png' },
+    { title: 'Proyecto 4',imageUrl: '/resources/work.png' },
   ];
 
   // Opciones dinámicas para tipos de Funko
