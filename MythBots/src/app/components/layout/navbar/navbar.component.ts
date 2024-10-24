@@ -1,7 +1,8 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CardCuentaComponent } from "../card-cuenta/card-cuenta.component";
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,6 +17,8 @@ export class NavbarComponent {
   logotipoRuta = '/home'
 
   // Definición de los elementos del menú
+
+  authService = inject(AuthService);
   menuItems = [
     { title: '3D Print', path: '/3d-print' },
     { title: 'PCB Desing', path: '/pcb-desing' },
@@ -26,6 +29,9 @@ export class NavbarComponent {
   ];
 
   // Acción al hacer clic en el icono de hamburguesa
+  logout(){
+    this.authService.logout();
+  }
   onHamburgerClick(): void {
     console.log('Hamburguesa clickeada'); // Simulación del sidebar
   }
