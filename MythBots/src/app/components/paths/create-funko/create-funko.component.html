@@ -2,17 +2,23 @@
     <!-- Banner -->
     <section class="banner">
         <div class="banner-content">
-            <h1 class="title">Crea el tuyo!</h1>
+            <!-- Titulo -->
+            <h1 class="title">{{ bannerData.title }}</h1>
+            <!-- list, instrucciones -->
             <ul class="instructions reset-margins">
-                <li>Selecciona el tipo de funko que deseas crear.</li>
-                <li>Personaliza los detalles de tu funko.</li>
-                <li>Confirma y añade al carrito.</li>
+                <li *ngFor="let instruction of bannerData.instructions">
+                    {{ instruction }}
+                </li>
             </ul>
+            <!-- botones -->
             <div class="banner-buttons">
-                <button class="btn btn-secondary" routerLink="/create-funko#trabajos">Ver trabajos</button>
-                <button class="btn btn-primary" routerLink="/create-funko#crear">Crear Funko</button>
+                <button *ngFor="let button of bannerData.buttons" class="btn" [routerLink]="button.ruta"
+                    [ngClass]="{'btn-primary': button.text.includes('Crear'), 'btn-secondary': !button.text.includes('Crear')}">
+                    {{ button.text }}
+                </button>
             </div>
         </div>
+        <!-- Banner Imagen -->
         <figure class="banner-image">
             <img src="/resources/home/CreateFunko.png" alt="Funko Banner" />
         </figure>
@@ -20,31 +26,32 @@
 
     <!-- Carrusel de proyectos -->
     <section class="carousel" id="trabajos">
+        <!-- Titulo -->
         <h2>Trabajos</h2>
+        <!-- Trabajos (img) -->
         <div class="carousel-container">
-            <div class="card">Imagen</div>
-            <div class="card">Imagen</div>
-            <div class="card">Imagen</div>
-            <div class="card">Imagen</div>
-            <div class="card">Imagen</div>
-            <div class="card">Imagen</div>
-            <div class="card">Imagen</div>
-            <div class="card">Imagen</div>
+            <div class="card" *ngFor="let trabajo of trabajos"
+                [ngStyle]="{ 'background-color': trabajo.imageUrl ? 'transparent' : '#ccc' }">
+                <img *ngIf="trabajo.imageUrl" [src]="trabajo.imageUrl" alt="Trabajo" />
+                <span *ngIf="!trabajo.imageUrl">Imagen</span>
+            </div>
         </div>
     </section>
 
     <!-- Selección de tipo de Funko -->
     <section class="select-funko" id="crear">
+        <!-- Titulo -->
         <h2>Crear Funko</h2>
+        <!-- Opciones -->
         <div class="options">
-            <div class="option" id="individual">
-                <img src="/resources/home/individual.png" alt="Individual Funko" />
-                <p>Individual</p>
-            </div>
-            <div class="option" id="en-pareja">
-                <img src="/resources/home/pareja.png" alt="Funko en Pareja" />
-                <p>En Pareja</p>
+            <div class="option" *ngFor="let type of funkoOptions">
+                <img [src]="type.img" [alt]="type.name" />
+                <p>{{ type.name }}</p>
             </div>
         </div>
-        <button class="btn btn-continue" routerLink="/customize">Continuar</button>
+        <!-- botones -->
+        <button class="btn btn-continue" [routerLink]="continueButton.ruta">
+            {{ continueButton.text }}
+        </button>
     </section>
+</article>

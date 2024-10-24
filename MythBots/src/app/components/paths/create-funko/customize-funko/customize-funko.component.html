@@ -1,1 +1,16 @@
-<p>customize-funko works!</p>
+<article class="customize-funko-page">
+    <div class="preview">
+        <h3>Previsualizador 3D</h3>
+        <div class="model-viewer">
+            <p>Modelo 3D del Funko Personalizado</p>
+        </div>
+    </div>
+    <div class="options">
+        <h3>Opciones de Personalización</h3>
+        <div class="option" *ngFor="let option of options">
+            <img [src]="option.image" alt="Personalización" />
+            <p>{{ option.description }}</p>
+        </div>
+    </div>
+    <button class="btn btn-submit">Confirmar Personalización</button>
+</article>
