@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomizeFunkoComponent } from './customize-funko/customize-funko.component';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AppComponent } from "../../../app.component";
 
 @Component({
   selector: 'app-create-funko',
   standalone: true,
-  imports: [CustomizeFunkoComponent, RouterLink, CommonModule],
+  imports: [CustomizeFunkoComponent,RouterModule ,RouterLink, CommonModule, AppComponent],
   templateUrl: './create-funko.component.html',
   styleUrl: './create-funko.component.scss'
 })
