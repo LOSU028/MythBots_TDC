@@ -23,17 +23,17 @@ export class FunkoHomeComponent {
       'Confirma y añade al carrito.'
     ],
     buttons: [
-      { text: 'Ver trabajos', ruta: '/create-funko#trabajos' },
-      { text: 'Crear Funko', ruta: '/create-funko#crear' }
+      { text: 'Ver trabajos', ruta: '/funko/home#trabajos' },
+      { text: 'Crear Funko', ruta: '/funko/home#crear' }
     ]
   };
 
   // Datos para trabajos con imagen opcional
   trabajos = [
-    { title: 'Proyecto 1', imageUrl: '/resources/work1.png' },
+    { title: 'Proyecto 1', imageUrl: '/resources/funko/CreateFunko.png' },
     { title: 'Proyecto 2', imageUrl: '' }, //En caso de que no haya imagen
-    { title: 'Proyecto 3', imageUrl: '/resources/work2.png' },
-    { title: 'Proyecto 4', imageUrl: '/resources/work.png' },
+    { title: 'Proyecto 3', imageUrl: '/resources/home/PCBDesing.jpg' },
+    { title: 'Proyecto 4', imageUrl: '/resources/funko/CreateFunko.png' },
   ];
 
   // Opciones dinámicas para tipos de Funko
