@@ -148,17 +148,22 @@
         }
 
         .btn-continue {
+            display: inline-block;
             margin-top: 1rem;
             background-color: $color-blue;
             color: $color-white;
             padding: 0.5rem 1rem;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
 
             &:hover {
                 background-color: darken($color-blue, 10%);
+                transform: scale(1.05);
             }
         }
     }

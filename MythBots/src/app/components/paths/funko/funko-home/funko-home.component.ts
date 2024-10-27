@@ -31,10 +31,13 @@ export class FunkoHomeComponent {
   // Datos para trabajos con imagen opcional
   trabajos = [
     { title: 'Proyecto 1', imageUrl: '/resources/funko/CreateFunko.png' },
-    { title: 'Proyecto 2', imageUrl: '' }, //En caso de que no haya imagen
+    { title: 'Proyecto 2', imageUrl: '' }, // En caso de que no haya imagen
     { title: 'Proyecto 3', imageUrl: '/resources/home/PCBDesing.jpg' },
     { title: 'Proyecto 4', imageUrl: '/resources/funko/CreateFunko.png' },
   ];
+
+  // Array duplicado para lograr el efecto infinito
+  trabajosDuplicados = [...this.trabajos, ...this.trabajos];
 
   // Opciones dinámicas para tipos de Funko
   funkoOptions = [
@@ -46,6 +49,6 @@ export class FunkoHomeComponent {
   // Botón de continuar con atributos dinámicos
   continueButton = {
     text: 'Continuar',
-    ruta: '/customize'
+    ruta: '/funko/customize'
   };
 }
