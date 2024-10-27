@@ -22,7 +22,7 @@ export class AppComponent {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         //Poner las rutas para que no aparezca el navbar
-        const noLayoutRoutes = ['/login', '/register'];
+        const noLayoutRoutes = ['/login', '/register','/funko/customize'];
         this.showLayout = !noLayoutRoutes.includes(event.url);
       }
     })
