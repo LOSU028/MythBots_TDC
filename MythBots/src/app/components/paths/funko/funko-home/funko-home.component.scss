@@ -128,6 +128,7 @@
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
+                transition: transform 0.2s;
 
                 img {
                     width: 100%;
@@ -140,9 +141,14 @@
                     font-weight: bold;
                 }
 
-                &:hover,
+                &:hover {
+                    transform: scale(1.05);
+                }
+
                 &.selected {
                     border: 3px solid $color-tertiary;
+                    transform: scale(1.1);
+                    transition: transform 0.2, border 0.3s;
                 }
             }
         }
@@ -150,8 +156,8 @@
         .btn-continue {
             display: inline-block;
             margin-top: 1rem;
-            background-color: $color-blue;
-            color: $color-white;
+            background-color: $color-gray-3;
+            color: $color-gray-1;
             padding: 0.5rem 1rem;
             border: none;
             border-radius: 8px;
@@ -160,10 +166,26 @@
             font-weight: bold;
             font-size: 1rem;
             transition: background-color 0.3s, transform 0.2s;
+            cursor: default;
 
-            &:hover {
-                background-color: darken($color-blue, 10%);
-                transform: scale(1.05);
+            //Estado activo (Habilitado)
+            &.enable {
+                background-color: $color-blue;
+                color: $color-white;
+                cursor: pointer;
+                animation: btnEnable 0.3s ease;
+
+                &:hover {
+                    background-color: darken($color-blue, 10%);
+                    transform: scale(1.05);
+                }
+            }
+
+            //Estado deshabilitado
+            &.disabled {
+                background-color: $color-gray-3;
+                cursor: not-allowed;
+                pointer-events: none;
             }
         }
     }
@@ -279,6 +301,17 @@
                 to {
                     transform: translate(calc(-100% + (2 * 300px)));
                 }
+            }
+        }
+
+        // Animación del botón al habilitar (Crear funko)
+        @keyframes btnEnable {
+            0% {
+                transform: scale(0.9);
+            }
+
+            100% {
+                transform: scale(1);
             }
         }
     }

@@ -61,13 +61,24 @@
         <h2>Crear Funko</h2>
         <!-- Opciones -->
         <div class="options">
-            <div class="option" *ngFor="let type of funkoOptions">
+            <div
+                class="option"
+                *ngFor="let type of funkoOptions"
+                (click)="toggleOption(type)"
+                [class.selected]="type.id === selectedOption?.id"
+            >
                 <img [src]="type.img" [alt]="type.name" />
                 <p>{{ type.name }}</p>
             </div>
         </div>
+
         <!-- botones -->
-        <a class="btn btn-continue" [routerLink]="continueButton.ruta">
+        <a
+            class="btn btn-continue"
+            [routerLink]="selectedOption ? continueButton.ruta: null"
+            [class.enable]="selectedOption"
+            [class.disable]="!selectedOption"
+        >
             {{ continueButton.text }}
         </a>
     </section>

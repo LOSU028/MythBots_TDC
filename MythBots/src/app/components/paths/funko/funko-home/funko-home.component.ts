@@ -46,9 +46,24 @@ export class FunkoHomeComponent {
     //{ id: 'mascotas', name: 'mascotas', img: '/resources/mascotas.png' }
   ];
 
+  //Opcion seleccionada
+  selectedOption: { id: string; name: string; img: string } | null = null;
+
   // Botón de continuar con atributos dinámicos
   continueButton = {
     text: 'Continuar',
     ruta: '/funko/customize'
   };
+
+  //Metodo para seleccionar una opcion
+  selectOption(option: { id: string; name: string; img: string }): void {
+    this.selectedOption = option;
+  }
+
+  // Método para alternar la selección de una opción
+  toggleOption(option: { id: string; name: string; img: string }): void {
+    this.selectedOption = this.selectedOption?.id === option.id ? null : option;
+  }
+
+
 }
