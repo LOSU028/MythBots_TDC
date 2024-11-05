@@ -1,0 +1,130 @@
+@import '../../../../_variables.scss';
+
+.pcbDesign {
+    min-width: 100%;
+    min-height: 100vh;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 36px;
+
+    .banner {
+        display: flex;
+        align-items: center;
+        gap: 36px;
+        padding: 36px;
+        background: $background-gradient;
+        border-radius: 10px;
+        justify-content: space-between;
+
+        .bannerImagen {
+            width: 120px;
+            height: 120px;
+            background-color: $color-primary;
+            border-radius: 50%;
+        }
+
+        .bannerContenido {
+            .bannerTitulo {
+                font-size: 32px;
+                color: $color-white;
+                margin: 0;
+            }
+
+            .bannerDescripcion {
+                font-size: 16px;
+                color: $color-gray-1;
+                margin-top: 10px;
+            }
+        }
+    }
+
+    .cotizar {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: $color-gray-2;
+        border-radius: 10px;
+
+        .cotizarTitulo {
+            font-size: 24px;
+            color: $color-primary;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .cotizarParrafo {
+            font-size: 16px;
+            color: $color-black;
+            text-align: start;
+        }
+
+        .formulario {
+            margin-top: 20px;
+
+            .formSeleccion {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 20px;
+            }
+
+            .formNombreApellido, .formEmailPhone {
+                display: flex;
+                justify-content: space-between;
+
+                .formCampo {
+                    width: 48%;
+
+                    .requerido {
+                        color: red;
+                        margin-left: 5px;
+                    }
+                }
+            }
+
+            .formCampo {
+                margin-bottom: 20px;
+
+                .formLabel {
+                    display: block;
+                    font-weight: bold;
+                    color: $color-black;
+                    margin-bottom: 5px;
+                }
+
+                .formInput {
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid $color-gray-4;
+                    border-radius: 5px;
+                    color: $color-black;
+                }
+
+                &.archivo {
+                    position: relative;
+                }
+
+                .inputArchivo {
+                    display: flex;
+                    align-items: center;
+
+                    .iconEliminar {
+                        cursor: pointer;
+                        margin-left: 10px;
+                    }
+                }
+            }
+
+            .formBoton {
+                padding: 10px 20px;
+                background-color: $color-primary;
+                color: $color-white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+
+                &:hover {
+                    background-color: $color-primary-hover;
+                }
+            }
+        }
+    }
+}

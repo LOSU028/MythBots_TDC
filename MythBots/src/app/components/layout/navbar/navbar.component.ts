@@ -18,7 +18,7 @@ export class NavbarComponent {
   // Definición de los elementos del menú
   menuItems = [
     { title: '3D Print', path: '/3d-print' },
-    { title: 'PCB Desing', path: '/pcb-desing' },
+    { title: 'PCB Desing', path: '/pcbDesing' },
     { title: 'Create Funko', path: '/funko' },
     { title: 'Courses', path: '/courses' },
     { title: 'Educational Robotics', path: '/educational-robotics' },
