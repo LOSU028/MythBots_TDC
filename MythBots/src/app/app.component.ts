@@ -12,33 +12,34 @@ import { AuthService } from './core/services/auth.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   isLogged: boolean = false
-  constructor(private authService: AuthService){
-    authService.loginObs.subscribe((isLogged:boolean) => {
-      this.isLogged = isLogged;
-    })
-  }
-  
+
   ngOnInit(): void {
     console.log(localStorage.getItem("USER_TOKEN"));
-    if (localStorage.getItem("USER_TOKEN")){
+    if (localStorage.getItem("USER_TOKEN")) {
       console.log("yes");
       this.isLogged = true;
     }
   }
-  
+
   title = 'MythBots';
 
   //Bandera, para mostrar el navbar o footer
   showLayout: Boolean = true;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthService) {
+
+    authService.loginObs.subscribe((isLogged: boolean) => {
+      this.isLogged = isLogged;
+    })
+
+
     //Escuchar los cambios de ruta
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         //Poner las rutas para que no aparezca el navbar
-        const noLayoutRoutes = ['/login', '/register','/funko/customize'];
+        const noLayoutRoutes = ['/login', '/register', '/funko/customize'];
         this.showLayout = !noLayoutRoutes.includes(event.url);
       }
     })
