@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/layout/navbar/navbar.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { CommonModule } from '@angular/common';
@@ -29,4 +29,18 @@ export class AppComponent implements OnInit{
   }
   
   title = 'MythBots';
+
+  //Bandera, para mostrar el navbar o footer
+  showLayout: Boolean = true;
+
+  constructor(private router: Router) {
+    //Escuchar los cambios de ruta
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        //Poner las rutas para que no aparezca el navbar
+        const noLayoutRoutes = ['/login', '/register','/funko/customize'];
+        this.showLayout = !noLayoutRoutes.includes(event.url);
+      }
+    })
+  }
 }

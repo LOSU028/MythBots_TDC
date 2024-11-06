@@ -21,8 +21,8 @@ export class NavbarComponent {
   authService = inject(AuthService);
   menuItems = [
     { title: '3D Print', path: '/3d-print' },
-    { title: 'PCB Desing', path: '/pcb-desing' },
-    { title: 'Create Funko', path: '/create-funko' },
+    { title: 'PCB Desing', path: '/pcbDesing' },
+    { title: 'Create Funko', path: '/funko' },
     { title: 'Courses', path: '/courses' },
     { title: 'Educational Robotics', path: '/educational-robotics' },
     { title: 'Contact', path: '/contact' },

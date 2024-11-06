@@ -1,0 +1,318 @@
+@import '../../../../../variables';
+@import '../../../../../global-styles';
+
+// Estilos globales: eliminamos padding general para todas las secciones
+.create-funko-page {
+    padding: 0;
+
+    // Banner con padding
+    .banner {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        background: $background-gradient;
+        padding: 2rem;
+        margin: 2rem;
+        border-radius: 10px;
+        color: $color-white;
+        position: relative;
+
+        .banner-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            max-width: 70%;
+
+            h1 {
+                align-self: flex-start;
+                font-size: 2.5rem;
+            }
+
+            .instructions {
+                margin-top: 2rem;
+                counter-reset: step;
+                list-style-type: none;
+                padding: 0;
+
+                li {
+                    margin-bottom: 1rem;
+                    display: flex;
+                    align-items: center;
+
+                    &:before {
+                        content: counter(step);
+                        counter-increment: step;
+                        background-color: $color-tertiary;
+                        color: $color-white;
+                        border-radius: 50%;
+                        width: 2rem;
+                        height: 2rem;
+                        text-align: center;
+                        margin-right: 1rem;
+                    }
+                }
+            }
+
+            .banner-buttons {
+                margin-top: auto;
+                display: flex;
+                gap: 2rem;
+
+                .btn {
+                    padding: 0.75rem 2rem;
+                    border: 2px transparent;
+                    color: $color-white;
+                    background-color: transparent;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+                    &:hover {
+                        transform: scale(1.05);
+                        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+                    }
+
+                }
+
+                .btn-primary {
+                    background-color: $color-tertiary;
+
+                    &:hover {
+                        background-color: darken($color-tertiary, 10%);
+                    }
+                }
+
+
+                .btn-secondary {
+                    border: 2px solid $color-black;
+
+                    &:hover {
+                        background-color: $color-black;
+                        color: $color-white;
+                    }
+                }
+            }
+        }
+
+        .banner-image {
+            img {
+                max-width: 300px;
+                border-radius: 10px;
+                max-height: 300px;
+                filter: drop-shadow(0px 0px 10px rgb(0, 0, 0, .8))
+            }
+        }
+    }
+
+    // Sección Crear Funko con padding
+    .select-funko {
+        padding: 2rem;
+        margin-top: 2rem;
+
+        .options {
+            display: flex;
+            justify-content: space-around;
+
+            .option {
+                width: 150px;
+                height: 150px;
+                background-color: $color-gray-2;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: transform 0.2s;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 10px 10px 0 0;
+                }
+
+                p {
+                    margin-top: 1rem;
+                    font-weight: bold;
+                }
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+
+                &.selected {
+                    border: 3px solid $color-tertiary;
+                    transform: scale(1.1);
+                    transition: transform 0.2, border 0.3s;
+                }
+            }
+        }
+
+        .btn-continue {
+            display: inline-block;
+            margin-top: 1rem;
+            background-color: $color-gray-3;
+            color: $color-gray-1;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
+            cursor: default;
+
+            //Estado activo (Habilitado)
+            &.enable {
+                background-color: $color-blue;
+                color: $color-white;
+                cursor: pointer;
+                animation: btnEnable 0.3s ease;
+
+                &:hover {
+                    background-color: darken($color-blue, 10%);
+                    transform: scale(1.05);
+                }
+            }
+
+            //Estado deshabilitado
+            &.disabled {
+                background-color: $color-gray-3;
+                cursor: not-allowed;
+                pointer-events: none;
+            }
+        }
+    }
+
+    // Trabajos sin padding
+    .carousel {
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+            padding: 20px;
+
+            .carousel-wrapper {
+                display: flex;
+                animation: scroll 30s linear infinite;
+            }
+
+            .card {
+                min-width: 250px;
+                min-height: 250px;
+                max-width: 300px;
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                text-align: center;
+                transition: transform 0.3s ease;
+                margin: 0 1rem;
+                position: relative;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+
+                .card-title {
+                    background-color: #42006B;
+                    color: white;
+                    padding: 0.5rem;
+                    font-size: 1.2rem;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    margin-top: 2rem;
+                }
+
+                span {
+                    display: block;
+                    padding: 2rem;
+                    background-color: #ccc;
+                }
+            }
+
+            .fader {
+                width: 12%;
+                height: calc(100% + 40px);
+                position: absolute;
+                top: -20px;
+                z-index: 10;
+                pointer-events: none;
+                background: transparent;
+
+                //Fader izq
+                &.left {
+                    left: 0;
+                    background: linear-gradient(to right, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+                }
+
+                //Fader Der
+                &.right {
+                    right: 0;
+                    background: linear-gradient(to left, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+                }
+            }
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-100% / 2));
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .carousel-wrapper {
+                animation: scrollMobile 30s infinite alternate linear;
+            }
+
+            @keyframes scrollMobile {
+                from {
+                    transform: translate(0, 0);
+                }
+
+                to {
+                    transform: translate(calc(-100% + (2 * 300px)));
+                }
+            }
+        }
+
+        // Animación del botón al habilitar (Crear funko)
+        @keyframes btnEnable {
+            0% {
+                transform: scale(0.9);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    }
+}

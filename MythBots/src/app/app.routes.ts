@@ -4,14 +4,51 @@ import { ContactanosComponent } from './components/paths/contactanos/contactanos
 import { LoginComponent } from './components/paths/login/login.component';
 import { RegistrarseComponent } from './components/paths/registrarse/registrarse.component';
 import { HomeComponent } from './components/paths/home/home.component';
-import { CreateFunkoComponent } from './components/paths/create-funko/create-funko.component';
 import { NgModule } from '@angular/core';
+import { FunkoComponent } from './components/paths/funko/funko.component';
+import { FunkoCustomizeComponent } from './components/paths/funko/funko-customize/funko-customize.component';
+import { FunkoHomeComponent } from './components/paths/funko/funko-home/funko-home.component';
+import { PcbDesingComponent } from './components/paths/pcb-desing/pcb-desing.component';
+import { PcbBasicComponent } from './components/paths/pcb-desing/pcb-basic/pcb-basic.component';
+import { PcbCustomizeComponent } from './components/paths/pcb-desing/pcb-customize/pcb-customize.component';
 export const routes: Routes = [
+
+    // default
     { path: '', redirectTo: 'home', pathMatch: 'full' },
+    // /login
     { path: 'login', component: LoginComponent },
+    // /register
     { path: 'register', component: RegistrarseComponent },
+    // /home
     { path: 'home', component: HomeComponent },
-    { path: 'create-funko', component: CreateFunkoComponent },
+    // /funko
+    {
+        //Ruta /funko - Padre
+        path: 'funko', component: FunkoComponent, children: [
+            // Redirección de /funko a /funko/home
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            // /funko/home
+            { path: 'home', component: FunkoHomeComponent },
+            // /funko/customize
+            { path: 'customize', component: FunkoCustomizeComponent }
+        ]
+    },
+    // /pcbDesing
+    {
+        //Ruta /pcbDesing - Padre
+        path: 'pcbDesing', component: PcbDesingComponent, children: [
+            // Redirección de /pcbDesing a /pcbDesing/basic
+            { path: '', redirectTo: 'pcbdesing', pathMatch: 'full' },
+            // /pcbDesing/basic
+            { path: 'basic', component: PcbBasicComponent },
+            // /pcbDesing/customize
+            { path: 'customize', component: PcbCustomizeComponent }
+        ]
+    },
+    // /contact
     { path: 'contact', component: ContactanosComponent },
+    // /config
     { path: 'config', component: ConfigPerfilComponent },
+    //Ruta comodin
+    //{ path: '**', component: PageNotFoundComponent}
 ];

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateFunkoComponent } from './create-funko.component';
+import { FunkoComponent } from './funko.component';
 
-describe('CreateFunkoComponent', () => {
-  let component: CreateFunkoComponent;
-  let fixture: ComponentFixture<CreateFunkoComponent>;
+describe('FunkoComponent', () => {
+  let component: FunkoComponent;
+  let fixture: ComponentFixture<FunkoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CreateFunkoComponent]
+      imports: [FunkoComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CreateFunkoComponent);
+    fixture = TestBed.createComponent(FunkoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
