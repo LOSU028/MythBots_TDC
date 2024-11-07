@@ -1,0 +1,66 @@
+@import '../../../../../_variables.scss';
+
+.pcb-basic {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 20px;
+
+    // Fila contenedora
+    &-fila {
+        display: flex;
+        align-items: center; // Centrar verticalmente los elementos en la fila
+        padding: 10px 15px;
+        border-radius: 8px;
+        gap: 6px; // Espacio entre columnas
+        box-sizing: border-box;
+        justify-content: space-between;
+
+        // Alternar entre fondo blanco y gris
+        &.fila-blanca {
+            background-color: $color-white;
+        }
+
+        &.fila-gris {
+            background-color: $color-gray-2;
+        }
+
+        // Columna de texto
+        &-texto {
+            width: 60%; // Ancho fijo del 60%
+            font-size: 16px;
+            color: $color-gray-7;
+            text-align: start; // Alineación del texto al inicio
+            white-space: nowrap; // Evita que el texto se desborde
+            overflow: hidden;
+            text-overflow: ellipsis; // Añade puntos suspensivos si el texto es muy largo
+        }
+
+        // Columna de checkbox
+        &-checkbox {
+            width: 20%; // Ancho fijo del 20%
+            transform: scale(1.2); // Aumenta el tamaño del checkbox
+            margin: 0 auto; // Centra horizontalmente en su espacio
+            accent-color: $color-primary;
+            cursor: pointer;
+        }
+
+        // Columna de input
+        &-input {
+            width: 20%; // Ancho fijo del 20%
+            padding: 6px;
+            font-size: 16px;
+            border: 1px solid $color-gray-4;
+            border-radius: 4px;
+            color: $color-gray-7;
+            box-sizing: border-box;
+            text-align: end; // Alinea el texto al final dentro del input
+
+            &:focus {
+                outline: none;
+                border-color: $color-primary;
+                box-shadow: 0 0 4px rgba(66, 0, 107, 0.3); // Sombra ligera en foco
+            }
+        }
+    }
+}
