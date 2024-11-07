@@ -8,15 +8,22 @@
         <figure class="bannerImagen"></figure>
     </header>
 
+    <!-- Contenedor Seleccionar Paquete -->
+    <section class="seleccionPaquete">
+        <h2 class="seleccionPaqueteTitulo">Selecciona tu paquete</h2>
+        <div class="opcionesPaquete">
+            <div class="opcionPaquete" data-paquete="basico">Básico</div>
+            <div class="opcionPaquete" data-paquete="personalizado">Personalizado</div>
+        </div>
 
-    <!-- Contenedor Selección Básico/Personalizado -->
-    <div class="formSeleccion">
-        <label class="formLabel">Selecciona un tipo:</label>
-        <select class="formInput tipoSeleccion" name="tipo" required>
-            <option value="basico">Básico</option>
-            <option value="personalizado">Personalizado</option>
-        </select>
-    </div>
+        <!-- Contenido del paquete -->
+        <section>
+            <!-- Depende del paquete, se mostrara el contenido seleccionado -->
+            <app-pcb-basic></app-pcb-basic>
+            <app-pcb-customize></app-pcb-customize>
+        </section>
+    </section>
+
 
     <!-- Formulario de Cotización -->
     <section class="cotizar">
@@ -39,7 +46,8 @@
                     <label for="apellido" class="formLabel">Apellido(s)
                         <span class="requerido">*</span>
                     </label>
-                    <input type="text" id="apellido" class="formInput" name="apellido" placeholder="Escribe tu apellido" required>
+                    <input type="text" id="apellido" class="formInput" name="apellido" placeholder="Escribe tu apellido"
+                        required>
                 </div>
             </section>
 
@@ -49,14 +57,16 @@
                     <label for="email" class="formLabel">Email
                         <span class="requerido">*</span>
                     </label>
-                    <input type="email" id="email" class="formInput" name="email" placeholder="Escribe tu correo electronico" required>
+                    <input type="email" id="email" class="formInput" name="email"
+                        placeholder="Escribe tu correo electronico" required>
                 </div>
 
                 <div class="formCampo">
                     <label for="phone" class="formLabel">Telefono
                         <span class="requerido">*</span>
                     </label>
-                    <input type="number" id="phone" class="formInput" name="phone" placeholder="Escribe tu numero telefonico" required>
+                    <input type="number" id="phone" class="formInput" name="phone"
+                        placeholder="Escribe tu numero telefonico" required>
                 </div>
             </section>
 
