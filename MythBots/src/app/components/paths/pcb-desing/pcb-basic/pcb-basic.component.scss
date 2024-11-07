@@ -6,17 +6,14 @@
     gap: 10px;
     padding-top: 20px;
 
-    // Fila contenedora
     &-fila {
         display: flex;
-        align-items: center; // Centrar verticalmente los elementos en la fila
+        align-items: center;
         padding: 10px 15px;
-        border-radius: 8px;
-        gap: 6px; // Espacio entre columnas
+        gap: 16px;
         box-sizing: border-box;
         justify-content: space-between;
 
-        // Alternar entre fondo blanco y gris
         &.fila-blanca {
             background-color: $color-white;
         }
@@ -25,41 +22,89 @@
             background-color: $color-gray-2;
         }
 
-        // Columna de texto
-        &-texto {
-            width: 60%; // Ancho fijo del 60%
+        // Contenedor del texto
+        .texto {
+            flex: 0 0 60%;
             font-size: 16px;
             color: $color-gray-7;
-            text-align: start; // Alineación del texto al inicio
-            white-space: nowrap; // Evita que el texto se desborde
+            text-align: start;
+            white-space: normal;
             overflow: hidden;
-            text-overflow: ellipsis; // Añade puntos suspensivos si el texto es muy largo
+            text-overflow: ellipsis;
+            display: flex;
+            align-items: center;
         }
 
-        // Columna de checkbox
-        &-checkbox {
-            width: 20%; // Ancho fijo del 20%
-            transform: scale(1.2); // Aumenta el tamaño del checkbox
-            margin: 0 auto; // Centra horizontalmente en su espacio
-            accent-color: $color-primary;
-            cursor: pointer;
+        // Variables de tamaño, checkbox
+        $checkbox-size: 18px;
+        $checkbox-inner-size: 8px; // tamaño de la animación
+        $checkbox-border-width: 2px; // borde
+
+        .seleccionable {
+            .checkbox-wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                // Tamaño del contenedor del label reducido
+                label {
+                    width: $checkbox-size;
+                    height: $checkbox-size;
+                    cursor: pointer;
+                }
+
+                // Checkbox oculto para estilo en span
+                input[type="checkbox"] {
+                    visibility: hidden;
+                    display: none;
+                }
+
+                // Animación y estilo cuando está marcado
+                input[type="checkbox"]:checked~.checkbox {
+                    transform: rotate(45deg);
+                    width: $checkbox-inner-size;
+                    margin-left: ($checkbox-size / 5); // Ajuste de margen para el tamaño reducido
+                    border-color: $color-primary;
+                    border-top-color: transparent;
+                    border-left-color: transparent;
+                    border-radius: 0;
+                }
+
+                // Checkbox visual (span) estilo reducido y transición
+                .checkbox {
+                    display: block;
+                    width: $checkbox-size;
+                    height: $checkbox-size;
+                    border: $checkbox-border-width solid $color-gray-7;
+                    border-radius: 4px;
+                    transition: all 0.375s;
+                }
+            }
         }
 
-        // Columna de input
-        &-input {
-            width: 20%; // Ancho fijo del 20%
-            padding: 6px;
-            font-size: 16px;
-            border: 1px solid $color-gray-4;
-            border-radius: 4px;
-            color: $color-gray-7;
-            box-sizing: border-box;
-            text-align: end; // Alinea el texto al final dentro del input
 
-            &:focus {
-                outline: none;
-                border-color: $color-primary;
-                box-shadow: 0 0 4px rgba(66, 0, 107, 0.3); // Sombra ligera en foco
+        // Contenedor del input
+        .campo {
+            flex: 0 0 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .pcb-basic-input {
+                width: 80%;
+                padding: 6px;
+                font-size: 16px;
+                border: 1px solid $color-gray-4;
+                border-radius: 4px;
+                color: $color-gray-7;
+                box-sizing: border-box;
+                text-align: end;
+
+                &:focus {
+                    outline: none;
+                    border-color: $color-primary;
+                    box-shadow: 0 0 4px rgba(66, 0, 107, 0.3);
+                }
             }
         }
     }
