@@ -65,12 +65,13 @@ const loginUser = async(req: Request, res: Response, next: NextFunction) => {
             { expiresIn : '1h'}
         );
 
-        return res.status(ResponseStatus.OK).json({
+        res.status(ResponseStatus.OK).json({
             status: true,
             message: 'User logged in',
             data: {_id: user._id, username: user.username, email: user.email },
             token,
-        })
+        });
+        res.cookie('token', token, {httpOnly: true, secure: true});
     }catch(error){
         return res.status(ResponseStatus.INTERNAL_SERVER_ERROR).send('Something went wrong');
     }

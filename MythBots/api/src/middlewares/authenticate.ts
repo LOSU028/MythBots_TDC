@@ -8,7 +8,7 @@ export  interface AuthRequest extends Request{
 }
 
 const authenticate = ( req: Request, res: Response, next: NextFunction) => {
-    const token = req.header('Authorization');
+    const token = req.header('Authorization')|| req.cookies.token;
 
     if (!token){
         return res.status(ResponseStatus.UNAUTHORIZED).send("Authorization token is required");
