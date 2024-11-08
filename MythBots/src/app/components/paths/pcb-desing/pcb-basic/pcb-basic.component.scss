@@ -63,7 +63,7 @@
                 input[type="checkbox"]:checked~.checkbox {
                     transform: rotate(45deg);
                     width: $checkbox-inner-size;
-                    margin-left: ($checkbox-size / 5); // Ajuste de margen para el tamaño reducido
+                    margin-left: calc($checkbox-size / 5);
                     border-color: $color-primary;
                     border-top-color: transparent;
                     border-left-color: transparent;
@@ -106,6 +106,15 @@
                     box-shadow: 0 0 4px rgba(66, 0, 107, 0.3);
                 }
             }
+
+            .unidad {
+                font-size: 16px;
+                color: $color-gray-7;
+                padding-left: 6px;
+                display: flex;
+                align-items: center;
+            }
+
         }
     }
 }
