@@ -27,6 +27,7 @@
             <input
                 type="text"
                 class="pcb-basic-input"
+                maxlength="10"
                 placeholder="Ingresa la cantidad"
                 [disabled]="!fila.seleccionado || !fila.editable || fila.seleccionado && !fila.editable"
                 [value]="fila.seleccionado && fila.valor !== null ? fila.valor : ''"

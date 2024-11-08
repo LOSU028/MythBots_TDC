@@ -83,7 +83,7 @@
 
         // Contenedor del input
         .campo {
-            flex: 0 0 20%;
+            flex: 0 0 30%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -96,7 +96,7 @@
                 border-radius: 4px;
                 color: $color-gray-7;
                 box-sizing: border-box;
-                text-align: end;
+                text-align: center;
 
                 &:focus {
                     outline: none;
@@ -115,78 +115,79 @@
         }
     }
 
-    // Media queries para pantallas (tablet)
+    // breakpoint para pantallas (tablet)
     @media (max-width: $breakpoint-tablet) {
         .pcb-basic {
-            flex-direction: column; // Mantener la dirección en columna
+            flex-direction: column;
             gap: 20px;
         }
 
         .pcb-basic-fila {
-            flex-direction: column; // Los elementos estarán en columna
-            align-items: flex-start; // Alineación inicial
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .texto {
-            flex: 0 0 100%; // El texto ocupará todo el ancho disponible
+            flex: 0 0 100%;
         }
 
         .seleccionable {
             display: flex;
-            justify-content: center; // El checkbox se coloca en el centro
+            justify-content: center;
             align-items: center;
-            width: 100%; // Asegura que ocupe todo el ancho disponible
+            width: 100%;
         }
 
         .campo {
-            flex: 0 0 100%; // El input ocupará todo el ancho disponible
-            order: 2; // El input se coloca después del checkbox
+            flex: 0 0 100%;
+            width: 100%;
+            order: 2;
             display: flex;
-            justify-content: flex-end; // El input se alinea a la derecha
+            justify-content: center;
         }
 
         .unidad {
-            order: 3; // La unidad se coloca después del input
+            order: 3;
             margin-top: 5px;
         }
     }
 
-    // Media query para móviles
+    // breakpoint para móviles
     @media (max-width: $breakpoint-mobile) {
         .pcb-basic {
-            gap: 15px; // Reduce el espacio entre los elementos
+            gap: 15px;
         }
 
         .pcb-basic-fila {
-            gap: 12px; // Reduce el espacio entre las filas
+            gap: 12px;
         }
 
         .campo {
-            flex: 0 0 100%; // El input sigue ocupando todo el ancho
-            order: 1; // El input se mantiene arriba
+            flex: 0 0 100%;
+            order: 1;
             display: flex;
-            justify-content: flex-end; // El input se alinea a la derecha
+            justify-content: flex-end;
         }
 
         .seleccionable {
             display: flex;
-            justify-content: center; // El checkbox se coloca en el centro
+            justify-content: center;
             align-items: center;
-            width: 100%; // Asegura que ocupe todo el ancho disponible
+            width: 100%;
         }
 
         .texto {
-            font-size: 14px; // Reducir tamaño de fuente en móviles
-            order: 2; // El texto se mantiene arriba
+            font-size: 14px;
+            order: 2;
         }
 
         .pcb-basic-input {
-            font-size: 14px; // Reducir tamaño de la fuente del input
-            padding: 5px; // Reducir el tamaño del padding
+            font-size: 14px;
+            padding: 5px;
         }
 
         .unidad {
-            font-size: 14px; // Reducir tamaño de la unidad en móviles
+            font-size: 14px;
         }
     }
 }
