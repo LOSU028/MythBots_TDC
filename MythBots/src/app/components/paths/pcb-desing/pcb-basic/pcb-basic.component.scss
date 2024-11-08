@@ -46,14 +46,12 @@
                 justify-content: center;
                 align-items: center;
 
-                // Tamaño del contenedor del label reducido
                 label {
                     width: $checkbox-size;
                     height: $checkbox-size;
                     cursor: pointer;
                 }
 
-                // Checkbox oculto para estilo en span
                 input[type="checkbox"] {
                     visibility: hidden;
                     display: none;
@@ -114,7 +112,81 @@
                 display: flex;
                 align-items: center;
             }
+        }
+    }
 
+    // Media queries para pantallas (tablet)
+    @media (max-width: $breakpoint-tablet) {
+        .pcb-basic {
+            flex-direction: column; // Mantener la dirección en columna
+            gap: 20px;
+        }
+
+        .pcb-basic-fila {
+            flex-direction: column; // Los elementos estarán en columna
+            align-items: flex-start; // Alineación inicial
+        }
+
+        .texto {
+            flex: 0 0 100%; // El texto ocupará todo el ancho disponible
+        }
+
+        .seleccionable {
+            display: flex;
+            justify-content: center; // El checkbox se coloca en el centro
+            align-items: center;
+            width: 100%; // Asegura que ocupe todo el ancho disponible
+        }
+
+        .campo {
+            flex: 0 0 100%; // El input ocupará todo el ancho disponible
+            order: 2; // El input se coloca después del checkbox
+            display: flex;
+            justify-content: flex-end; // El input se alinea a la derecha
+        }
+
+        .unidad {
+            order: 3; // La unidad se coloca después del input
+            margin-top: 5px;
+        }
+    }
+
+    // Media query para móviles
+    @media (max-width: $breakpoint-mobile) {
+        .pcb-basic {
+            gap: 15px; // Reduce el espacio entre los elementos
+        }
+
+        .pcb-basic-fila {
+            gap: 12px; // Reduce el espacio entre las filas
+        }
+
+        .campo {
+            flex: 0 0 100%; // El input sigue ocupando todo el ancho
+            order: 1; // El input se mantiene arriba
+            display: flex;
+            justify-content: flex-end; // El input se alinea a la derecha
+        }
+
+        .seleccionable {
+            display: flex;
+            justify-content: center; // El checkbox se coloca en el centro
+            align-items: center;
+            width: 100%; // Asegura que ocupe todo el ancho disponible
+        }
+
+        .texto {
+            font-size: 14px; // Reducir tamaño de fuente en móviles
+            order: 2; // El texto se mantiene arriba
+        }
+
+        .pcb-basic-input {
+            font-size: 14px; // Reducir tamaño de la fuente del input
+            padding: 5px; // Reducir el tamaño del padding
+        }
+
+        .unidad {
+            font-size: 14px; // Reducir tamaño de la unidad en móviles
         }
     }
 }
