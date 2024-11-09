@@ -13,9 +13,11 @@ import { CommonModule } from '@angular/common';
 export class PcbDesingComponent {
 
   // Banner
-  bannerTitle: string = 'PCB Design';
-  bannerDescription: string = 'Agregar una descripción del servicio de diseño de PCB.';
-  bannerImageUrl: string = 'path/to/image.jpg';
+  banner = {
+    titulo: 'PCB Desing',
+    descripcion: 'Agregar una descripción del servicio de diseño de PCB.',
+    imagenUrl: 'ruta/img.jpg'
+  };
 
   // Opciones de paquete
   paquetes = [
@@ -31,6 +33,7 @@ export class PcbDesingComponent {
     { id: 'phone', titulo: 'Telefono', type: 'number', placeholder: 'Escribe tu numero telefonico', requerido: true }
   ];
 
+  //Lista para almacenar archivos dinamicamente
   archivos: { id: string }[] = [{ id: 'archivo1' }];
 
   // Añadir un archivo al formulario

@@ -2,88 +2,66 @@
     <!-- Banner -->
     <header class="banner">
         <div class="bannerContenido">
-            <h1 class="bannerTitulo">PCB Design</h1>
-            <p class="bannerDescripcion">Agregar una descripción del servicio de diseño de PCB.</p>
+            <h1 class="bannerTitulo">{{ banner.titulo }}</h1>
+            <p class="bannerDescripcion">{{ banner.descripcion }}</p>
         </div>
-        <figure class="bannerImagen"></figure>
+        <figure class="bannerImagen">
+            <img [src]="banner.imagenUrl" alt="Imagen de banner de diseño de PCB" />
+        </figure>
     </header>
 
     <!-- Contenedor Seleccionar Paquete -->
     <section class="seleccionPaquete">
         <h2 class="seleccionPaqueteTitulo">Selecciona tu paquete</h2>
         <div class="opcionesPaquete">
-            <div class="opcionPaquete" data-paquete="basico">Básico</div>
-            <div class="opcionPaquete" data-paquete="personalizado">Personalizado</div>
+            <div *ngFor="let paquete of paquetes" class="opcionPaquete" [attr.data-paquete]="paquete.id">
+                {{ paquete.titulo }}
+            </div>
         </div>
-
         <!-- Contenido del paquete -->
         <section>
-            <!-- Depende del paquete, se mostrara el contenido seleccionado -->
             <app-pcb-basic></app-pcb-basic>
             <app-pcb-customize></app-pcb-customize>
         </section>
     </section>
-
 
     <!-- Formulario de Cotización -->
     <section class="cotizar">
         <h2 class="cotizarTitulo">Cotizar precio</h2>
         <p class="cotizarParrafo">Por favor introduce los siguientes datos:</p>
 
-        <form class="formulario">
-
-            <!-- Campo Nombre y Apellido en la misma fila -->
-            <section class="formNombreApellido">
-                <div class="formCampo">
-                    <label for="nombre" class="formLabel">Nombre(s)
-                        <span class="requerido">*</span>
+        <form class="formulario" (ngSubmit)="enviarFormulario()">
+            <!-- Campos del formulario (Nombre, Apellido, Email, Telefono) en pares -->
+            <div class="formNombreApellido" *ngFor="let i of [0, 2]">
+                <div class="formCampo" *ngFor="let campo of camposFormulario.slice(i, i + 2)">
+                    <label [for]="campo.id" class="formLabel">
+                        {{ campo.titulo }}
+                        <span *ngIf="campo.requerido" class="requerido">*</span>
                     </label>
-                    <input type="text" id="nombre" class="formInput" name="nombre" placeholder="Escribe tu nombre"
-                        required>
-                </div>
-
-                <div class="formCampo">
-                    <label for="apellido" class="formLabel">Apellido(s)
-                        <span class="requerido">*</span>
-                    </label>
-                    <input type="text" id="apellido" class="formInput" name="apellido" placeholder="Escribe tu apellido"
-                        required>
-                </div>
-            </section>
-
-            <!-- Campo Email y Telefono en la misma fila -->
-            <section class="formEmailPhone">
-                <div class="formCampo">
-                    <label for="email" class="formLabel">Email
-                        <span class="requerido">*</span>
-                    </label>
-                    <input type="email" id="email" class="formInput" name="email"
-                        placeholder="Escribe tu correo electronico" required>
-                </div>
-
-                <div class="formCampo">
-                    <label for="phone" class="formLabel">Telefono
-                        <span class="requerido">*</span>
-                    </label>
-                    <input type="number" id="phone" class="formInput" name="phone"
-                        placeholder="Escribe tu numero telefonico" required>
-                </div>
-            </section>
-
-            <!-- Campo para Subir Archivo -->
-            <div class="formCampo">
-                <label for="archivo" class="formLabel">Subir archivo</label>
-                <div class="inputArchivo">
-                    <input type="file" id="archivo" class="formInput archivo" name="archivo">
-                    <span class="iconEliminar" onclick="eliminarArchivo()">🗑️</span> <!-- Emoji para eliminar -->
+                    <input [type]="campo.type" [id]="campo.id" class="formInput" [name]="campo.id"
+                        [placeholder]="campo.placeholder" [required]="campo.requerido" />
                 </div>
             </div>
+
+            <!-- Campos para Subir Archivos -->
+            <div *ngFor="let archivo of archivos; let i = index" class="formCampo">
+                <label for="{{ archivo.id }}" class="formLabel">Subir archivo</label>
+                <div class="inputArchivo">
+                    <input type="file" [id]="archivo.id" class="formInput archivo" [name]="archivo.id">
+                    <span class="iconEliminar" (click)="deleteArchivo(i)">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </span>
+                </div>
+            </div>
+            <button type="button" class="formBotonSecundario" (click)="addArchivo()">
+                <i class="fa-regular fa-square-plus"></i>
+            </button>
 
             <!-- Campo Descripción -->
             <div class="formCampo">
                 <label for="descripcion" class="formLabel">Descripción</label>
                 <textarea id="descripcion" class="formInput" name="descripcion" rows="4"
-                    placeholder="Cuentanos un poco mas sobre tu proyecto" required></textarea>
+                    placeholder="Cuéntanos un poco más sobre tu proyecto" required></textarea>
             </div>
 
             <!-- Botón de Envío -->
