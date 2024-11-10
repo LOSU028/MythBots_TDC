@@ -11,6 +11,7 @@ import { FunkoHomeComponent } from './components/paths/funko/funko-home/funko-ho
 import { PcbDesingComponent } from './components/paths/pcb-desing/pcb-desing.component';
 import { PcbBasicComponent } from './components/paths/pcb-desing/pcb-basic/pcb-basic.component';
 import { PcbCustomizeComponent } from './components/paths/pcb-desing/pcb-customize/pcb-customize.component';
+import { authGuardGuard } from './guards/auth-guard.guard';
 export const routes: Routes = [
 
     // default
@@ -20,11 +21,11 @@ export const routes: Routes = [
     // /register
     { path: 'register', component: RegistrarseComponent },
     // /home
-    { path: 'home', component: HomeComponent },
+    { path: 'home',component: HomeComponent, canActivate:[authGuardGuard] },
     // /funko
     {
         //Ruta /funko - Padre
-        path: 'funko', component: FunkoComponent, children: [
+        path: 'funko', component: FunkoComponent, canActivate:[authGuardGuard], children: [
             // Redirección de /funko a /funko/home
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             // /funko/home
@@ -36,7 +37,7 @@ export const routes: Routes = [
     // /pcbDesing
     {
         //Ruta /pcbDesing - Padre
-        path: 'pcbDesing', component: PcbDesingComponent, children: [
+        path: 'pcbDesing', component: PcbDesingComponent, canActivate:[authGuardGuard], children: [
             // Redirección de /pcbDesing a /pcbDesing/basic
             { path: '', redirectTo: 'pcbdesing', pathMatch: 'full' },
             // /pcbDesing/basic
@@ -48,7 +49,7 @@ export const routes: Routes = [
     // /contact
     { path: 'contact', component: ContactanosComponent },
     // /config
-    { path: 'config', component: ConfigPerfilComponent },
+    { path: 'config', component: ConfigPerfilComponent, canActivate:[authGuardGuard]},
     //Ruta comodin
     //{ path: '**', component: PageNotFoundComponent}
 ];
