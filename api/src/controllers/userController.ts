@@ -12,7 +12,7 @@ interface UserInterface {
     password: string;
 }
 
-const registerUser = async (req: Request, res: Response, next: NextFunction) => {
+const registerUser = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
         const { username, email, password } = req.body;
         if( !username || !email || !password){
             return res.status(ResponseStatus.BAD_REQUEST).send('All fields are required');
@@ -42,7 +42,7 @@ const registerUser = async (req: Request, res: Response, next: NextFunction) => 
         }
 };
 
-const loginUser = async(req: Request, res: Response, next: NextFunction) => {
+const loginUser = async(req: Request, res: Response, next: NextFunction): Promise<any> => {
     const { username, password } = req.body;
 
     if( !username || !password){
@@ -65,12 +65,14 @@ const loginUser = async(req: Request, res: Response, next: NextFunction) => {
             { expiresIn : '1h'}
         );
 
-        return res.status(ResponseStatus.OK).json({
+        res.cookie('token', token, {httpOnly: true, secure: true});
+        res.status(ResponseStatus.OK).json({
             status: true,
             message: 'User logged in',
             data: {_id: user._id, username: user.username, email: user.email },
             token,
-        })
+        });
+        
     }catch(error){
         return res.status(ResponseStatus.INTERNAL_SERVER_ERROR).send('Something went wrong');
     }
