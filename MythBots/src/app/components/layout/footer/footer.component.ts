@@ -20,22 +20,25 @@ export class FooterComponent {
 
   //Apartado de Historia
   historyItems= [
-    { text: 'Acerca de', link: '/acerca-de'},
-    { text: 'Historia', link: '/Historia'},
-    { text: 'Quienes Somos', link: '/quienes-somos'}
+    { text: 'Acerca de nosotros', link: '/acerca-de'},
+    { text: 'Historia', link: '/Historia'}
   ];
 
   //Apartado de Servicios
   serviceItems = [
-    { text: 'Productos', link: '/productos' },
-    { text: 'Servicios', link: '/servicios' },
-    { text: 'Cursos', link: '/cursos' }
+    { text: '3D Print', link: '/3d-print' },
+    { text: 'PCB Desing', link: '/pcbDesing' },
+    { text: 'Create Funko', link: '/funko' },
+    { text: 'Courses', link: '/courses' },
+    { text: 'Educational Robotics', link: '/educational-robotics' },
+    { text: 'Contactanos', link: '/contact' },
   ];
 
   //Apartado de Contactos
   contacts = [
     { icon: 'fab fa-whatsapp', text: '+52 123 123 123', url: 'https://wa.me/52123123123' },
     { icon: 'fas fa-envelope', text: 'Mythbots@example.com', url: 'mailto:correo@example.com' },
+    { icon: 'fa-solid fa-map-location-dot', text: 'Av Niños Héroes 2267-int. 208, Col Americana, Barrera, 44190 Guadalajara, Jal.', url: 'https://maps.app.goo.gl/vFG3NnMvYJKkkUoj9'}
 ];
 
   //Apartado de Redes sociales
