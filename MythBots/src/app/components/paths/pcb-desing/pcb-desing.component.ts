@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Type } from '@angular/core';
 import { PcbBasicComponent } from './pcb-basic/pcb-basic.component';
 import { PcbCustomizeComponent } from './pcb-customize/pcb-customize.component';
 import { CommonModule } from '@angular/common';
@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-pcb-desing',
   standalone: true,
-  imports: [PcbBasicComponent, PcbCustomizeComponent, CommonModule],
+  imports: [CommonModule],
   templateUrl: './pcb-desing.component.html',
   styleUrl: './pcb-desing.component.scss'
 })
@@ -21,17 +21,26 @@ export class PcbDesingComponent {
 
   // Opciones de paquete
   paquetes = [
-    { id: 'basico', titulo: 'Básico' },
-    { id: 'personalizado', titulo: 'Personalizado' },
-    { id: 'extra', titulo: 'Extra'}
+    { id: 'basico', titulo: 'Básico', componente: PcbBasicComponent },
+    { id: 'personalizado', titulo: 'Personalizado', componente: PcbCustomizeComponent },
   ];
 
   //Paquete seleccionado
   paqueteSeleccionado: string | null = null;
+  componenteSeleccionado: Type<any> | null = null;
 
   //Seleccionar o deseleccionar el paquete
   seleccionarPaquete(id: string) {
-    this.paqueteSeleccionado = this.paqueteSeleccionado === id ? null : id;
+    const paquete = this.paquetes.find(p => p.id === id);
+    if (this.paqueteSeleccionado === id) {
+      // si se vuelve a hacer clic, se deselecciona
+      this.paqueteSeleccionado = null;
+      this.componenteSeleccionado = null;
+    } else {
+      //Selecciona el paquete y componente correspondiente
+      this.paqueteSeleccionado = id;
+      this.componenteSeleccionado = paquete?.componente || null;
+    }
   }
 
 
