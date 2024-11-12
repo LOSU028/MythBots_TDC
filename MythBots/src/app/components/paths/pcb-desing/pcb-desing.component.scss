@@ -54,7 +54,7 @@
         .opcionesPaquete {
             display: flex;
             gap: 10px;
-            flex-wrap: wrap; // Permitir que los elementos se ajusten en varias filas
+            flex-wrap: wrap;
 
             .opcionPaquete {
                 flex: 1;
@@ -67,11 +67,13 @@
                 border-radius: 5px;
                 cursor: pointer;
                 transition: background-color 0.3s, color 0.3s;
+                border-bottom: 3px solid transparent;
 
                 &:hover,
                 &.seleccionado {
-                    background-color: $color-primary;
+                    background-color: lighten($color-primary, 45%);
                     color: $color-white;
+                    border-bottom-color: $color-primary;
                 }
             }
         }

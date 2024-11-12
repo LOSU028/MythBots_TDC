@@ -22,8 +22,18 @@ export class PcbDesingComponent {
   // Opciones de paquete
   paquetes = [
     { id: 'basico', titulo: 'Básico' },
-    { id: 'personalizado', titulo: 'Personalizado' }
+    { id: 'personalizado', titulo: 'Personalizado' },
+    { id: 'extra', titulo: 'Extra'}
   ];
+
+  //Paquete seleccionado
+  paqueteSeleccionado: string | null = null;
+
+  //Seleccionar o deseleccionar el paquete
+  seleccionarPaquete(id: string) {
+    this.paqueteSeleccionado = this.paqueteSeleccionado === id ? null : id;
+  }
+
 
   // Campos del formulario
   camposFormulario = [

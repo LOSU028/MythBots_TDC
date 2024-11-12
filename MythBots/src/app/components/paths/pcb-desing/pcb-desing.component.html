@@ -14,13 +14,21 @@
     <section class="seleccionPaquete">
         <h2 class="seleccionPaqueteTitulo">Selecciona tu paquete</h2>
         <div class="opcionesPaquete">
-            <div *ngFor="let paquete of paquetes" class="opcionPaquete" [attr.data-paquete]="paquete.id">
+            <div
+                *ngFor="let paquete of paquetes"
+                class="opcionPaquete"
+                [ngClass]="{ 'seleccionado': paqueteSeleccionado === paquete.id }"
+                (click)="seleccionarPaquete(paquete.id)"
+                [attr.data-paquete]="paquete.id"
+            >
                 {{ paquete.titulo }}
             </div>
         </div>
         <!-- Contenido del paquete -->
-        <section>
+        <section *ngIf="paqueteSeleccionado === 'basico' ">
             <app-pcb-basic></app-pcb-basic>
+        </section>
+        <section *ngIf="paqueteSeleccionado === 'personalizado' ">
             <app-pcb-customize></app-pcb-customize>
         </section>
     </section>

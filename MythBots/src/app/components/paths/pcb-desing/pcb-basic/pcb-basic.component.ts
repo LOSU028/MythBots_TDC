@@ -13,28 +13,32 @@ import { NgModel } from '@angular/forms';
 export class PcbBasicComponent {
   filas = [
     {
-      id: 1, texto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      id: 1,
+      texto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       seleccionado: false,
       editable: true,
       valor: null,
       unidad: "pzas"
     },
     {
-      id: 2, texto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      id: 2,
+      texto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       seleccionado: false,
       editable: true,
       valor: null,
       unidad: "pzas"
     },
     {
-      id: 3, texto: 'Text3',
+      id: 3,
+      texto: 'Text3',
       seleccionado: false,
       editable: true,
       valor: null,
       unidad: "pzas"
     },
     {
-      id: 4, texto: 'Text4',
+      id: 4,
+      texto: 'Text4',
       seleccionado: true,
       editable: false,
       valor: 5,
