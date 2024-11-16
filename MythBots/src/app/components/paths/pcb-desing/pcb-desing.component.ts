@@ -16,7 +16,7 @@ export class PcbDesingComponent {
   banner = {
     titulo: 'PCB Desing',
     descripcion: 'Agregar una descripción del servicio de diseño de PCB.',
-    imagenUrl: 'ruta/img.jpg'
+    imagenUrl: 'resources/pcbDesing/PCBDesingTarjeta.png'
   };
 
   // Opciones de paquete
@@ -43,7 +43,6 @@ export class PcbDesingComponent {
     }
   }
 
-
   // Campos del formulario
   camposFormulario = [
     { id: 'nombre', titulo: 'Nombre(s)', type: 'text', placeholder: 'Escribe tu nombre', requerido: true },
@@ -51,6 +50,9 @@ export class PcbDesingComponent {
     { id: 'email', titulo: 'Email', type: 'email', placeholder: 'Escribe tu correo electronico', requerido: true },
     { id: 'phone', titulo: 'Telefono', type: 'number', placeholder: 'Escribe tu numero telefonico', requerido: true }
   ];
+
+  //Boton enviar deshabilitado por default
+  botonHabilitado = false;
 
   //Lista para almacenar archivos dinamicamente
   archivos: { id: string }[] = [{ id: 'archivo1' }];
