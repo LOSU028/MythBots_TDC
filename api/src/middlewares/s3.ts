@@ -3,28 +3,29 @@ import multer, {FileFilterCallback} from "multer";
 import { S3Client } from "@aws-sdk/client-s3";
 import { v4 as uuidv4 } from 'uuid';
 import multerS3 from 'multer-s3';
+const dotenv = require('dotenv');
+const aws = require('aws-sdk');
+
+dotenv.config();
 
 const fileFilter = (req: Request, file: Express.Multer.File, cb: FileFilterCallback) => {
     const isValid = file.mimetype.startsWith('image/');
     cb(null, isValid);
 }
 
-const accessKey = process.env.S3_ACCESS_KEY;
-const secretKey = process.env.S3_SECRET_KEY;
-const region = process.env.S3_REGION;
-
-const s3Client = new S3Client({
-    region,
-    credentials: {
-        accessKeyId: accessKey!,
-        secretAccessKey: secretKey || ''
-    }
+aws.config.update({
+    secretAccessKey: process.env.SECRET_ACCESS_KEY,
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    sessionToken: process.env.AWS_SESSION_TOKEN,
+    region: process.env.S3_REGION
 });
+
+const s3 = new aws.S3();
 
 const upload = multer({
     fileFilter: fileFilter,
     storage: multerS3({
-        s3:s3Client,
+        s3:s3,
         bucket: process.env.AWS_BUCKET_NAME as string,
         key: (req, file, cb) => {
             const extension = file.originalname.split('.').pop();
@@ -34,4 +35,4 @@ const upload = multer({
     })
 })
 
-const uploadS3 = multer({ fileFilter});
+export const uploadS3 = upload.single('file');

@@ -5,6 +5,8 @@ import { createServer } from 'http';
 import { Server as SocketIOServer } from 'socket.io';
 import userRoutes from './routes/userRoute';
 import cors from 'cors';
+import routes from './routes';
+
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
@@ -23,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use('/users', userRoutes);
+app.use(routes);
 app.get('/', (req,res)=>{
     res.json({message: "App is working fine"});
 })
