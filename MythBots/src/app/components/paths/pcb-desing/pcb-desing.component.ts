@@ -59,6 +59,7 @@ export class PcbDesingComponent implements OnInit {
 
   inicializarFormulario(): void {
     this.cotizacionForm = this.fb.group({
+      paqueteSeleccionado: ['', Validators.required],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -76,10 +77,14 @@ export class PcbDesingComponent implements OnInit {
       this.paqueteSeleccionado = null;
       this.componenteSeleccionado = null;
       this.formularioHabilitado = false;
+
+      this.cotizacionForm.get('paqueteSeleccionado')?.setValue('');
     } else {
       this.paqueteSeleccionado = id;
       this.componenteSeleccionado = paquete?.componente || null;
       this.formularioHabilitado = true;
+
+      this.cotizacionForm.get('paqueteSeleccionado')?.setValue(id);
     }
   }
 
@@ -90,7 +95,6 @@ export class PcbDesingComponent implements OnInit {
     return this.cotizacionForm.get('archivos') as FormArray;
   }
 
-
   addArchivo(): void {
     if (this.archivos.length < 5) {
       this.archivoSubido = false; // Bloqueamos el botón hasta que se suba un archivo
@@ -99,29 +103,11 @@ export class PcbDesingComponent implements OnInit {
     }
   }
 
-  /*
-  addArchivo() {
-    const nuevoArchivo = { id: `archivo${this.archivos.length + 1}` };
-    this.archivos.push(nuevoArchivo);
-
-    //Actualizar el control de reactivo por archivos
-    this.cotizacionForm.patchValue({ archivos: this.archivos });
-  }
-  */
-
   // Eliminar un archivo del formulario
   deleteArchivo(index: number) {
-    this.archivos.removeAt(index);  // Eliminamos el control en el índice especificado
+    this.archivos.removeAt(index);
     this.archivoSubido = true; //Habilitar btn añadir mas
   }
-
-  /*
-  deleteArchivo(index: number) {
-    this.archivos.splice(index, 1);
-
-    this.cotizacionForm.patchValue({ archivos: this.archivos });
-  }
-    */
 
   // Validar el archivo antes de cargarlo
   validarArchivo(event: Event, index: number): void {
@@ -149,6 +135,7 @@ export class PcbDesingComponent implements OnInit {
     if (this.cotizacionForm.valid) {
       const datosFormulario = this.cotizacionForm.value;
       console.log('Datos del formulario:', datosFormulario);
+      console.log('Paquete Seleccionado:', datosFormulario.paqueteSeleccionado);
     } else {
       console.log('Formulario no válido');
     }
