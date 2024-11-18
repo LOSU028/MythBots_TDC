@@ -31,7 +31,7 @@
         <h2 class="cotizarTitulo">Cotizar precio</h2>
         <p class="cotizarParrafo">Por favor introduce los siguientes datos:</p>
 
-        <form class="formulario" (ngSubmit)="enviarFormulario()">
+        <form class="formulario" [formGroup]="cotizacionForm" (ngSubmit)="enviarFormulario()">
             <!-- Campos del formulario (Nombre, Apellido, Email, Telefono) en pares -->
             <div class="formNombreApellido" *ngFor="let i of [0, 2]">
                 <div class="formCampo" *ngFor="let campo of camposFormulario.slice(i, i + 2)">
@@ -40,7 +40,13 @@
                         <span *ngIf="campo.requerido" class="requerido">*</span>
                     </label>
                     <input [type]="campo.type" [id]="campo.id" class="formInput" [name]="campo.id"
-                        [placeholder]="campo.placeholder" [required]="campo.requerido" />
+                        [placeholder]="campo.placeholder" [formControlName]="campo.id" [required]="campo.requerido" />
+
+                    <!-- Mostrar errores de validación -->
+                    <div *ngIf="cotizacionForm.get(campo.id)?.invalid && cotizacionForm.get(campo.id)?.touched"
+                        class="error">
+                        {{ campo.titulo }} es requerido
+                    </div>
                 </div>
             </div>
 
@@ -59,10 +65,15 @@
             </button>
 
             <!-- Campo Descripción -->
-            <div class="formCampo">
+            <div class="formCampo"
+                [class.error]="cotizacionForm.get('descripcion')?.invalid && cotizacionForm.get('descripcion')?.touched">
                 <label for="descripcion" class="formLabel">Descripción</label>
                 <textarea id="descripcion" class="formInput" name="descripcion" rows="4"
-                    placeholder="Cuéntanos un poco más sobre tu proyecto" required></textarea>
+                    placeholder="Cuéntanos un poco más sobre tu proyecto"></textarea>
+                <div *ngIf="cotizacionForm.get('descripcion')?.invalid && cotizacionForm.get('descripcion')?.touched"
+                    class="errorMensaje">
+                    La descripcion es requerida
+                </div>
             </div>
 
             <!-- Botón de Envío -->

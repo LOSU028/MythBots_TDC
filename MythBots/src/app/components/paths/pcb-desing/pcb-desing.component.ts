@@ -2,11 +2,12 @@ import { Component, Type } from '@angular/core';
 import { PcbBasicComponent } from './pcb-basic/pcb-basic.component';
 import { PcbCustomizeComponent } from './pcb-customize/pcb-customize.component';
 import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pcb-desing',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './pcb-desing.component.html',
   styleUrl: './pcb-desing.component.scss'
 })
@@ -51,6 +52,31 @@ export class PcbDesingComponent {
     { id: 'phone', titulo: 'Telefono', type: 'number', placeholder: 'Escribe tu numero telefonico', requerido: true }
   ];
 
+
+  //formulario reactivo
+  cotizacionForm!: FormGroup;
+
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit(): void {
+    this.cotizacionForm = this.fb.group({
+      ...this.camposFormulario.reduce<{ [key: string]: any[]}>((controls, campo) => {
+        controls[campo.id] = [
+          '',
+          campo.requerido ? [Validators.required] : []
+        ];
+        return controls;
+      }, {}),
+      decripcion: [''],
+      archivos: [this.archivos] //Ref. a archivos
+    });
+
+    //Escuchar cambios del formulario
+    this.cotizacionForm.statusChanges.subscribe((status) => {
+      this.botonHabilitado = this.cotizacionForm.valid;
+    });
+  }
+
   //Boton enviar deshabilitado por default
   botonHabilitado = false;
 
@@ -61,15 +87,25 @@ export class PcbDesingComponent {
   addArchivo() {
     const nuevoArchivo = { id: `archivo${this.archivos.length + 1}` };
     this.archivos.push(nuevoArchivo);
+
+    //Actualizar el control de reactivo por archivos
+    this.cotizacionForm.patchValue({ archivos: this.archivos });
   }
 
   // Eliminar un archivo del formulario
   deleteArchivo(index: number) {
     this.archivos.splice(index, 1);
+
+    this.cotizacionForm.patchValue({ archivos: this.archivos });
   }
 
   // Manejo del envío del formulario
-  enviarFormulario() {
-    console.log("Formulario enviado.");
+  enviarFormulario(): void {
+    if (this.cotizacionForm.valid) {
+      const datosFormulario = this.cotizacionForm.value;
+      console.log('Datos del formulario:', datosFormulario);
+    } else {
+      console.log('Formulario no válido');
+    }
   }
 }

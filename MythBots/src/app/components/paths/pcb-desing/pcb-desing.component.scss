@@ -160,6 +160,19 @@
                         margin-left: 10px;
                     }
                 }
+
+                &.error {
+                    .formInput {
+                        border-color: $color-red;
+                        background-color: #ffe6e6;
+                    }
+                }
+
+                .errorMensaje {
+                    color: $color-red;
+                    font-size: 14px;
+                    margin-top: 5px;
+                }
             }
 
             .formBoton {
