@@ -1,0 +1,10 @@
+<section class="fondo-modal">
+    <div class="contenedor-modal">
+        <h2 class="titulo-modal">¿En qué área necesitas ayuda?</h2>
+        <div class="lista-areas">
+            <button *ngFor="let area of areas" class="boton-area" (click)="seleccionarArea(area)">
+                {{ area }}
+            </button>
+        </div>
+    </div>
+</section>
