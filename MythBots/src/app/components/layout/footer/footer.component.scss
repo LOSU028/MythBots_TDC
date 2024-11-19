@@ -104,9 +104,11 @@
     //Seccion de contacto
     .footer__contact-link {
         display: flex;
+        justify-content: space-between;
         align-items: center;
         text-decoration: none;
         color: inherit;
+        white-space: normal;
 
         &:hover {
             color: $color-secondary;

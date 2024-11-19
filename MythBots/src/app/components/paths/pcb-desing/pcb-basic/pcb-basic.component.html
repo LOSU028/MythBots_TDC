@@ -1,1 +1,38 @@
-<p>pcb-basic works!</p>
+<section class="pcb-basic">
+    <div *ngFor="let fila of filas; let i = index" [ngClass]="getFilaColor(i)" class="pcb-basic-fila">
+        <!--Text-->
+        <div class="texto">
+            <span>{{ fila.texto }}</span>
+        </div>
+
+        <!--Checkbox-->
+        <div class="seleccionable">
+            <div class="checkbox-wrapper">
+                <label>
+                    <input
+                        type="checkbox"
+                        class="pcb-basic-checkbox"
+                        [attr.aria-label]="'Seleccionar paquete básico ' + (i + 1)"
+                        [checked]="fila.seleccionado"
+                        (change)="toggleSeleccion(i)"
+                        [disabled]="fila.editable === false"
+                    />
+                    <span class="checkbox"></span>
+                </label>
+            </div>
+        </div>
+
+        <!--Input-->
+        <div class="campo">
+            <input
+                type="text"
+                class="pcb-basic-input"
+                maxlength="10"
+                placeholder="Ingresa la cantidad"
+                [disabled]="!fila.seleccionado || !fila.editable || fila.seleccionado && !fila.editable"
+                [value]="fila.seleccionado && fila.valor !== null ? fila.valor : ''"
+            />
+            <span class="unidad">{{ fila.unidad }}</span>
+        </div>
+    </div>
+</section>

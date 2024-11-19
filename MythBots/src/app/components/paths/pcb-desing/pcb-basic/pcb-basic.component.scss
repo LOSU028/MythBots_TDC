@@ -1,0 +1,193 @@
+@import '../../../../../_variables.scss';
+
+.pcb-basic {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 20px;
+
+    &-fila {
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        gap: 16px;
+        box-sizing: border-box;
+        justify-content: space-between;
+
+        &.fila-blanca {
+            background-color: $color-white;
+        }
+
+        &.fila-gris {
+            background-color: $color-gray-2;
+        }
+
+        // Contenedor del texto
+        .texto {
+            flex: 0 0 60%;
+            font-size: 16px;
+            color: $color-gray-7;
+            text-align: start;
+            white-space: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: flex;
+            align-items: center;
+        }
+
+        // Variables de tamaño, checkbox
+        $checkbox-size: 18px;
+        $checkbox-inner-size: 8px; // tamaño de la animación
+        $checkbox-border-width: 2px; // borde
+
+        .seleccionable {
+            .checkbox-wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                label {
+                    width: $checkbox-size;
+                    height: $checkbox-size;
+                    cursor: pointer;
+                }
+
+                input[type="checkbox"] {
+                    visibility: hidden;
+                    display: none;
+                }
+
+                // Animación y estilo cuando está marcado
+                input[type="checkbox"]:checked~.checkbox {
+                    transform: rotate(45deg);
+                    width: $checkbox-inner-size;
+                    margin-left: calc($checkbox-size / 5);
+                    border-color: $color-primary;
+                    border-top-color: transparent;
+                    border-left-color: transparent;
+                    border-radius: 0;
+                }
+
+                // Checkbox visual (span) estilo reducido y transición
+                .checkbox {
+                    display: block;
+                    width: $checkbox-size;
+                    height: $checkbox-size;
+                    border: $checkbox-border-width solid $color-gray-7;
+                    border-radius: 4px;
+                    transition: all 0.375s;
+                }
+            }
+        }
+
+
+        // Contenedor del input
+        .campo {
+            flex: 0 0 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .pcb-basic-input {
+                width: 80%;
+                padding: 6px;
+                font-size: 16px;
+                border: 1px solid $color-gray-4;
+                border-radius: 4px;
+                color: $color-gray-7;
+                box-sizing: border-box;
+                text-align: center;
+
+                &:focus {
+                    outline: none;
+                    border-color: $color-primary;
+                    box-shadow: 0 0 4px rgba(66, 0, 107, 0.3);
+                }
+            }
+
+            .unidad {
+                font-size: 16px;
+                color: $color-gray-7;
+                padding-left: 6px;
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+
+    // breakpoint para pantallas (tablet)
+    @media (max-width: $breakpoint-tablet) {
+        .pcb-basic {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .pcb-basic-fila {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .texto {
+            flex: 0 0 100%;
+        }
+
+        .seleccionable {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .campo {
+            flex: 0 0 100%;
+            width: 100%;
+            order: 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .unidad {
+            order: 3;
+            margin-top: 5px;
+        }
+    }
+
+    // breakpoint para móviles
+    @media (max-width: $breakpoint-mobile) {
+        .pcb-basic {
+            gap: 15px;
+        }
+
+        .pcb-basic-fila {
+            gap: 12px;
+        }
+
+        .campo {
+            flex: 0 0 100%;
+            order: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .seleccionable {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .texto {
+            font-size: 14px;
+            order: 2;
+        }
+
+        .pcb-basic-input {
+            font-size: 14px;
+            padding: 5px;
+        }
+
+        .unidad {
+            font-size: 14px;
+        }
+    }
+}

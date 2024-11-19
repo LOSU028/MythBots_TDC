@@ -6,6 +6,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 36px;
 
+    // Banner Section
     .banner {
         display: flex;
         align-items: center;
@@ -16,10 +17,15 @@
         justify-content: space-between;
 
         .bannerImagen {
-            width: 120px;
-            height: 120px;
-            background-color: $color-primary;
-            border-radius: 50%;
+            width: 350px;
+            height: auto;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .bannerContenido {
@@ -37,11 +43,66 @@
         }
     }
 
+    // Paquete Selection Section
+    .seleccionPaquete {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: $color-gray-2;
+        border-radius: 10px;
+
+        .seleccionPaqueteTitulo {
+            font-size: 24px;
+            color: $color-primary;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .opcionesPaquete {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+
+            .opcionPaquete {
+                flex: 1;
+                padding: 20px;
+                text-align: center;
+                font-size: 20px;
+                font-weight: 600;
+                color: $color-gray-5;
+                background-color: $color-gray-3;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+                border-bottom: 3px solid transparent;
+
+                &:hover,
+                &.seleccionado {
+                    background-color: lighten($color-primary, 45%);
+                    color: $color-white;
+                    border-bottom-color: $color-primary;
+                }
+            }
+        }
+    }
+
+    // Cotizar seccion
     .cotizar {
         margin-top: 30px;
         padding: 20px;
         background-color: $color-gray-2;
         border-radius: 10px;
+
+        .mensajeInicial {
+            font-size: 18px;
+            color: $color-gray-5;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: lighten($color-gray-2, 10%);
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
 
         .cotizarTitulo {
             font-size: 24px;
@@ -59,13 +120,15 @@
         .formulario {
             margin-top: 20px;
 
-            .formSeleccion {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 20px;
+            .formDescripcion {
+                .requerido {
+                    color: red;
+                    margin-left: 5px;
+                }
             }
 
-            .formNombreApellido, .formEmailPhone {
+            .formNombreApellido,
+            .formEmailPhone {
                 display: flex;
                 justify-content: space-between;
 
@@ -87,6 +150,11 @@
                     font-weight: bold;
                     color: $color-black;
                     margin-bottom: 5px;
+
+                    .opcional {
+                        color: $color-gray-5;
+                        font-size: 12px;
+                    }
                 }
 
                 .formInput {
@@ -95,26 +163,114 @@
                     border: 1px solid $color-gray-4;
                     border-radius: 5px;
                     color: $color-black;
+
+                    &:focus {
+                        outline: none;
+                        border-color: $color-primary;
+                        box-shadow: 0 0 4px rgba(66, 0, 107, 0.3);
+                    }
                 }
 
                 &.archivo {
                     position: relative;
+
+                    // Bloque de estilo para el campo de archivos
+                    .inputArchivo {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 10px;
+                        justify-content: flex-start;
+                        align-items: center;
+
+                        // Botón "Añadir más..."
+                        .iconAgregar {
+                            background-color: $color-primary;
+                            color: $color-white;
+                            border: none;
+                            padding: 8px 16px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            transition: background-color 0.3s;
+
+                            &:hover {
+                                background-color: darken($color-primary, 10%);
+                            }
+                        }
+
+                        .iconAgregar:disabled {
+                            background-color: lighten($color-primary, 20%);
+                            cursor: not-allowed;
+                            opacity: 0.6;
+                        }
+                    }
+
+                    .archivo-container {
+                        display: flex;
+                        width: 100%;
+                        gap: 10px;
+                        align-items: center;
+
+                        // Contenedor individual para cada archivo
+                        .archivo-contenedor {
+                            background-color: $color-white;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            flex: 1;
+                            padding: 5px 10px;
+                            border-radius: 5px;
+
+                            input[type="file"] {
+                                flex: 1;
+                                border: none;
+                                background: transparent;
+                                color: $color-black;
+                                cursor: pointer;
+
+                                &:focus {
+                                    outline: none;
+                                }
+                            }
+
+                            .iconEliminar {
+                                margin-left: auto;
+                                color: $color-red;
+                                cursor: pointer;
+                                font-size: 20px;
+
+                                &:hover {
+                                    color: darken($color-red, 10%);
+                                }
+                            }
+                        }
+                    }
                 }
 
-                .inputArchivo {
-                    display: flex;
-                    align-items: center;
-
-                    .iconEliminar {
-                        cursor: pointer;
-                        margin-left: 10px;
+                &.error {
+                    .formInput {
+                        border-color: $color-red;
+                        background-color: #ffe6e6;
                     }
+                }
+
+                .errorMensaje {
+                    color: $color-red;
+                    font-size: 14px;
+                    margin-top: 5px;
+                }
+
+                .warnMensaje {
+                    color: $color-black;
+                    font-size: 14px;
+                    margin-top: 5px;
                 }
             }
 
+            // Boton de enviar
             .formBoton {
                 padding: 10px 20px;
-                background-color: $color-primary;
+                min-width: 10%;
+                background-color: $color-primary-6;
                 color: $color-white;
                 border: none;
                 border-radius: 5px;
@@ -122,8 +278,67 @@
                 font-size: 16px;
 
                 &:hover {
-                    background-color: $color-primary-hover;
+                    background-color: $color-primary;
+                    transition: background-color 0.5s, color 0.5s;
                 }
+
+                &:disabled {
+                    background-color: lighten($color-primary-6, 20%);
+                    color: darken($color-white, 10%);
+                    cursor: not-allowed;
+                    opacity: 0.6;
+                }
+            }
+        }
+    }
+}
+
+// Responsivo: Tablet
+@media (max-width: $breakpoint-tablet) {
+    .pcbDesign {
+        .banner {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .seleccionPaquete {
+            .opcionesPaquete {
+                flex-direction: column;
+            }
+        }
+
+        .cotizar {
+            .formulario {
+
+                .formNombreApellido,
+                .formEmailPhone {
+                    flex-direction: column;
+
+                    .formCampo {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    // Responsivo: Mobile
+    @media (max-width: $breakpoint-mobile) {
+        .pcbDesign {
+            padding: 20px;
+
+            .banner {
+                padding: 20px;
+                gap: 20px;
+            }
+
+            .seleccionPaquete,
+            .cotizar {
+                padding: 10px;
+            }
+
+            .cotizar .cotizarTitulo {
+                font-size: 20px;
             }
         }
     }

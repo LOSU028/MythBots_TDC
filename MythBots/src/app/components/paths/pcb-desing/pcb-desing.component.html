@@ -2,82 +2,135 @@
     <!-- Banner -->
     <header class="banner">
         <div class="bannerContenido">
-            <h1 class="bannerTitulo">PCB Design</h1>
-            <p class="bannerDescripcion">Agregar una descripción del servicio de diseño de PCB.</p>
+            <h1 class="bannerTitulo">{{ banner.titulo }}</h1>
+            <p class="bannerDescripcion">{{ banner.descripcion }}</p>
         </div>
-        <figure class="bannerImagen"></figure>
+        <figure class="bannerImagen">
+            <img [src]="banner.imagenUrl" alt="Imagen de banner de diseño de PCB" />
+        </figure>
     </header>
 
+    <!-- Contenedor Seleccionar Paquete -->
+    <section class="seleccionPaquete">
+        <h2 class="seleccionPaqueteTitulo">Selecciona tu paquete</h2>
+        <div class="opcionesPaquete">
+            <div *ngFor="let paquete of paquetes" class="opcionPaquete"
+                [ngClass]="{ 'seleccionado': paqueteSeleccionado === paquete.id }"
+                (click)="seleccionarPaquete(paquete.id)" [attr.data-paquete]="paquete.id">
+                {{ paquete.titulo }}
+            </div>
+        </div>
 
-    <!-- Contenedor Selección Básico/Personalizado -->
-    <div class="formSeleccion">
-        <label class="formLabel">Selecciona un tipo:</label>
-        <select class="formInput tipoSeleccion" name="tipo" required>
-            <option value="basico">Básico</option>
-            <option value="personalizado">Personalizado</option>
-        </select>
-    </div>
+        <!-- Seleccion y Contenido del paquete -->
+        <ng-container *ngIf="componenteSeleccionado">
+            <ng-container *ngComponentOutlet="componenteSeleccionado"></ng-container>
+        </ng-container>
+    </section>
 
     <!-- Formulario de Cotización -->
     <section class="cotizar">
         <h2 class="cotizarTitulo">Cotizar precio</h2>
-        <p class="cotizarParrafo">Por favor introduce los siguientes datos:</p>
 
-        <form class="formulario">
-
-            <!-- Campo Nombre y Apellido en la misma fila -->
-            <section class="formNombreApellido">
+        <!-- Mostrar mensaje inicial -->
+        <p *ngIf="!formularioHabilitado" class="mensajeInicial">
+            Primero tienes que seleccionar un paquete.
+        </p>
+        <!-- Mostrar formulario -->
+        <form *ngIf="formularioHabilitado" [formGroup]="cotizacionForm" (ngSubmit)="enviarFormulario()"
+            class="formulario">
+            <!-- Mostrar mensaje inicial -->
+            <p class="">
+                Ingresa los siguientes datos.
+            </p>
+            <!-- Campo Nombre / Apellido -->
+            <div class="formNombreApellido">
+                <!-- Campo Nombre -->
                 <div class="formCampo">
-                    <label for="nombre" class="formLabel">Nombre(s)
-                        <span class="requerido">*</span>
-                    </label>
-                    <input type="text" id="nombre" class="formInput" name="nombre" placeholder="Escribe tu nombre"
-                        required>
+                    <label class="formLabel" for="nombre">Nombre <span class="requerido">*</span></label>
+                    <input id="nombre" class="formInput" type="text" formControlName="nombre"
+                        placeholder="Escribe tu nombre" />
+                    <div *ngIf="cotizacionForm.get('nombre')?.invalid && cotizacionForm.get('nombre')?.touched"
+                        class="errorMensaje">
+                        El nombre es requerido.
+                    </div>
                 </div>
-
+                <!-- Campo Apellido -->
                 <div class="formCampo">
-                    <label for="apellido" class="formLabel">Apellido(s)
-                        <span class="requerido">*</span>
-                    </label>
-                    <input type="text" id="apellido" class="formInput" name="apellido" placeholder="Escribe tu apellido" required>
-                </div>
-            </section>
-
-            <!-- Campo Email y Telefono en la misma fila -->
-            <section class="formEmailPhone">
-                <div class="formCampo">
-                    <label for="email" class="formLabel">Email
-                        <span class="requerido">*</span>
-                    </label>
-                    <input type="email" id="email" class="formInput" name="email" placeholder="Escribe tu correo electronico" required>
-                </div>
-
-                <div class="formCampo">
-                    <label for="phone" class="formLabel">Telefono
-                        <span class="requerido">*</span>
-                    </label>
-                    <input type="number" id="phone" class="formInput" name="phone" placeholder="Escribe tu numero telefonico" required>
-                </div>
-            </section>
-
-            <!-- Campo para Subir Archivo -->
-            <div class="formCampo">
-                <label for="archivo" class="formLabel">Subir archivo</label>
-                <div class="inputArchivo">
-                    <input type="file" id="archivo" class="formInput archivo" name="archivo">
-                    <span class="iconEliminar" onclick="eliminarArchivo()">🗑️</span> <!-- Emoji para eliminar -->
+                    <label class="formLabel" for="apellido">Apellido <span class="requerido">*</span></label>
+                    <input id="apellido" class="formInput" type="text" formControlName="apellido"
+                        placeholder="Escribe tu apellido" />
+                    <div *ngIf="cotizacionForm.get('apellido')?.invalid && cotizacionForm.get('apellido')?.touched"
+                        class="errorMensaje">
+                        El apellido es requerido.
+                    </div>
                 </div>
             </div>
 
-            <!-- Campo Descripción -->
-            <div class="formCampo">
-                <label for="descripcion" class="formLabel">Descripción</label>
-                <textarea id="descripcion" class="formInput" name="descripcion" rows="4"
-                    placeholder="Cuentanos un poco mas sobre tu proyecto" required></textarea>
+            <!-- Campo Email / Phone -->
+            <div class="formEmailPhone">
+                <!-- Campo Email -->
+                <div class="formCampo">
+                    <label class="formLabel" for="email">Email <span class="requerido">*</span></label>
+                    <input id="email" class="formInput" type="email" formControlName="email"
+                        placeholder="Escribe tu correo electrónico" />
+                    <div *ngIf="cotizacionForm.get('email')?.invalid && cotizacionForm.get('email')?.touched"
+                        class="errorMensaje">
+                        El correo es inválido.
+                    </div>
+                </div>
+                <!-- Campo Phone -->
+                <div class="formCampo">
+                    <label class="formLabel" for="phone">Teléfono <span class="requerido">*</span></label>
+                    <input id="phone" class="formInput" type="text" formControlName="phone"
+                        placeholder="Escribe tu número telefónico" />
+                    <div *ngIf="cotizacionForm.get('phone')?.invalid && cotizacionForm.get('phone')?.touched"
+                        class="errorMensaje">
+                        El teléfono es requerido.
+                    </div>
+                </div>
             </div>
 
-            <!-- Botón de Envío -->
-            <button type="submit" class="formBoton">Enviar</button>
+            <!-- Campo Archivos -->
+            <div class="formCampo archivo">
+                <label class="formLabel" for="archivos">Archivos de Referencia <span class="opcional">(Opcional)</span></label>
+                <div formArrayName="archivos" class="inputArchivo">
+                    <div *ngFor="let archivo of archivos.controls; let i = index" class="archivo-container">
+                        <div class="archivo-contenedor">
+                            <input type="file" [formControlName]="i" (change)="validarArchivo($event, i)"
+                                [accept]="'.jpg,.jpeg,.png,.mp4,.mov,.zip,.pdf,.docx,.dwg,.stl'" />
+                            <i class="fa-solid fa-trash-can iconEliminar" (click)="deleteArchivo(i)"
+                                *ngIf="archivo.value"></i>
+                        </div>
+                    </div>
+                    <!-- boton añadir mas -->
+                    <button type="button" class="iconAgregar" (click)="addArchivo()" [disabled]="archivos.controls.length > 5 || !archivoSubido">
+                        <i class="fa-solid fa-plus"></i> Añadir más...
+                    </button>
+                </div>
+                <div *ngIf="cotizacionForm.get('archivos')?.invalid && cotizacionForm.get('archivos')?.touched"
+                    class="warnMensaje">
+                    Solo puedes agregar hasta 5 archivos, con un tamaño máximo de 25MB cada uno.
+                </div>
+            </div>
+
+
+
+            <!-- Campo Descripcion -->
+            <div class="formDescripcion">
+                <div class="formCampo">
+                    <label class="formLabel" for="descripcion">Descripción <span class="requerido">*</span></label>
+                    <textarea id="descripcion" class="formInput" formControlName="descripcion"
+                        placeholder="Cuéntanos sobre tu proyecto"></textarea>
+                    <div *ngIf="cotizacionForm.get('descripcion')?.invalid && cotizacionForm.get('descripcion')?.touched"
+                        class="errorMensaje error">
+                        La descripción es requerida.
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Boton Enviar -->
+            <button type="submit" class="formBoton" [disabled]="cotizacionForm.invalid">Enviar</button>
         </form>
     </section>
 </article>

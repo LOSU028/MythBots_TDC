@@ -1,0 +1,90 @@
+@import '../../../../../_variables.scss';
+
+.pcb-customize {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    // Estilo para la sección de descripción
+    .descripcion {
+        h2 {
+            font-size: 1.5rem;
+            color: $color-primary;
+        }
+
+        p {
+            font-size: 1rem;
+            color: $color-black;
+            margin-bottom: 10px;
+        }
+
+        .campo-texto {
+            width: 100%;
+            min-height: 100px;
+            border: 1px solid $color-gray-4;
+            border-radius: 4px;
+            padding: 10px;
+            resize: vertical;
+            font-size: 16px;
+            color: $color-gray-7;
+
+            &:focus {
+                outline: none;
+                border-color: $color-primary;
+            }
+        }
+    }
+
+    // Estilo para la sección de referencias
+    .referencias {
+
+        h2 {
+            font-size: 16px;
+            color: $color-primary;
+        }
+
+        p {
+            font-size: 16px;
+            color: $color-black;
+        }
+
+        .campo-archivo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+
+            .input-file {
+                flex: 1;
+                padding: 6px;
+                font-size: 0.9rem;
+                border: 1px solid $color-gray-4;
+                border-radius: 4px;
+            }
+
+            .btn-eliminar {
+                color: $color-tertiary;
+                cursor: pointer;
+                font-size: 1.2rem;
+                background: none;
+                border: none;
+            }
+        }
+
+        // Botón para añadir más archivos
+        .btn-agregar {
+            background-color: $color-primary;
+            color: $color-white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: darken($color-primary, 10%);
+            }
+        }
+    }
+}
