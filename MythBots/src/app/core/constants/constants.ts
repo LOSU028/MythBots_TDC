@@ -4,8 +4,8 @@ export const ApiEndpoint = {
     Auth:{
         Register: `${environment.apiUrl}users/register`,
         Login: `${environment.apiUrl}users/login`
-    }
-
+    },
+    fileUpload:`${environment.apiUrl}uploads`
 }
 
 

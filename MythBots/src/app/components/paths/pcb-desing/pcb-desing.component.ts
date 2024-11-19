@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { PcbCustomizeComponent } from './pcb-customize/pcb-customize.component';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormArray } from '@angular/forms';
+import { FileUploadService } from '../../../core/services/file-upload.service';
 
 @Component({
   selector: 'app-pcb-desing',
@@ -13,7 +14,23 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormArray } fr
   styleUrl: './pcb-desing.component.scss'
 })
 export class PcbDesingComponent implements OnInit {
+  selectedFile : File | any;
 
+  onFileUpload() {
+    this.fileUploadService.FileUpload(this.selectedFile).subscribe({
+      next:(response) =>{
+        console.log(response);
+      }
+    });
+  }
+
+  onFileSelected(event: Event): void {
+    console.log("File selected")
+    const FILE = (event.target as HTMLInputElement).files?.[0];
+    this.selectedFile = FILE;
+    console.log(this.selectedFile)
+    
+  }
   // === Variables inicializadas con datos estáticos ===
 
   // Banner
@@ -47,7 +64,7 @@ export class PcbDesingComponent implements OnInit {
   //Lista para almacenar archivos dinamicamente
   //archivos: { id: string }[] = [{ id: 'archivo1' }];
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router,private fileUploadService: FileUploadService) { }
 
   // === Ciclo de vida de Angular ===
 
