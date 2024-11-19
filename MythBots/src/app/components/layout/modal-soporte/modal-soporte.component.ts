@@ -20,5 +20,11 @@ export class ModalSoporteComponent {
 
   seleccionarArea(area: string):void {
     this.areaSeleccionada.emit(area);
+
+    // Formateamos el área para la ruta
+    const areaSlug = area.toLowerCase().replace(/\s+/g, '-'); // Convierte el área a formato de URL
+
+    // Redirigir a la nueva ruta
+    this.router.navigate([`/soporte/${areaSlug}`]);
   }
 }

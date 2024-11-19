@@ -18,6 +18,30 @@
     font-size: 24px;
     font-weight: bold;
     border-bottom: 2px solid $color-primary-hover;
+
+    .header-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        button {
+            padding: 10px 20px;
+            background-color: $color-tertiary;
+            color: $color-white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+
+            &:hover {
+                background-color: $color-tertiary-6;
+            }
+        }
+
+        h1 {
+            margin: 0;
+        }
+    }
 }
 
 // Contenedor de mensajes
