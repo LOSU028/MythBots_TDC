@@ -1,5 +1,6 @@
 import { Component, Type, ChangeDetectorRef, OnInit } from '@angular/core';
 import { PcbBasicComponent } from './pcb-basic/pcb-basic.component';
+import { Router } from '@angular/router';
 import { PcbCustomizeComponent } from './pcb-customize/pcb-customize.component';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormArray } from '@angular/forms';
@@ -46,7 +47,7 @@ export class PcbDesingComponent implements OnInit {
   //Lista para almacenar archivos dinamicamente
   //archivos: { id: string }[] = [{ id: 'archivo1' }];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   // === Ciclo de vida de Angular ===
 
@@ -86,6 +87,11 @@ export class PcbDesingComponent implements OnInit {
 
       this.cotizacionForm.get('paqueteSeleccionado')?.setValue(id);
     }
+  }
+
+  // Método para redirigir a la ruta '/soporte' al hacer clic
+  soporte(): void {
+    window.open('/soporte', '_blank');
   }
 
   // === Métodos para manejo de archivos ===

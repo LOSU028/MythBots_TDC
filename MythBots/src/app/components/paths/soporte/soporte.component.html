@@ -1,0 +1,37 @@
+<!-- Modal solo se muestra si no se ha seleccionado ninguna área -->
+<div *ngIf="!area">
+    <app-modal-soporte (areaSeleccionada)="actualizarArea($event)"></app-modal-soporte>
+</div>
+
+<!-- Chat de soporte (solo visible cuando se ha seleccionado un área) -->
+<section *ngIf="area" class="chat-container">
+
+    <header class="chat-header">
+        <!-- Título del chat dinámico basado en el área seleccionada -->
+        <h1>Soporte para {{ area || 'Selecciona un área' }}</h1>
+        <div class="header-container">
+            <!-- Boton para regresar a /soporte -->
+            <button (click)="regresar()">Regresar</button>
+        </div>
+    </header>
+
+    <main class="chat-messages">
+        <!-- Mensajes enviados (Ejemplo) -->
+        <div class="message sent">
+            Hola, ¿en qué puedo ayudarte?
+        </div>
+
+        <!-- Mensajes recibidos (Ejemplo) -->
+        <div class="message received">
+            Tengo una consulta sobre mi pedido.
+        </div>
+    </main>
+
+    <footer class="chat-footer">
+        <!-- Campo de entrada para el mensaje -->
+        <input type="text" class="chat-input" placeholder="Escribe un mensaje..." />
+
+        <!-- Botón para enviar el mensaje -->
+        <button class="send-button">Enviar</button>
+    </footer>
+</section>

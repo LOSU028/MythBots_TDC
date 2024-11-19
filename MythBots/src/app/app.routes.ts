@@ -12,6 +12,7 @@ import { PcbDesingComponent } from './components/paths/pcb-desing/pcb-desing.com
 import { PcbBasicComponent } from './components/paths/pcb-desing/pcb-basic/pcb-basic.component';
 import { PcbCustomizeComponent } from './components/paths/pcb-desing/pcb-customize/pcb-customize.component';
 import { authGuardGuard } from './guards/auth-guard.guard';
+import { SoporteComponent } from './components/paths/soporte/soporte.component';
 export const routes: Routes = [
 
     // default
@@ -44,6 +45,19 @@ export const routes: Routes = [
             { path: 'basic', component: PcbBasicComponent },
             // /pcbDesing/customize
             { path: 'customize', component: PcbCustomizeComponent }
+        ]
+    },
+    // /soporte
+    {
+        path: 'soporte', component: SoporteComponent,
+        //soporte/{{area}}
+        children: [
+            { path: '3d-print', component: SoporteComponent },
+            { path: 'pcb-desing', component: SoporteComponent },
+            { path: 'create-funko', component: SoporteComponent },
+            { path: 'cursos', component: SoporteComponent },
+            { path: 'educational-robotics', component: SoporteComponent },
+            { path: 'otro', component: SoporteComponent },
         ]
     },
     // /contact
