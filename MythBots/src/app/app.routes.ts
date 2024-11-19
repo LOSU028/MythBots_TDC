@@ -47,7 +47,18 @@ export const routes: Routes = [
         ]
     },
     // /soporte
-    { path: 'soporte', component: SoporteComponent },
+    {
+        path: 'soporte', component: SoporteComponent,
+        //soporte/{{area}}
+        children: [
+            { path: '3d-print', component: SoporteComponent },
+            { path: 'pcb-desing', component: SoporteComponent },
+            { path: 'create-funko', component: SoporteComponent },
+            { path: 'cursos', component: SoporteComponent },
+            { path: 'educational-robotics', component: SoporteComponent },
+            { path: 'otro', component: SoporteComponent },
+        ]
+    },
     // /contact
     { path: 'contact', component: ContactanosComponent },
     // /config

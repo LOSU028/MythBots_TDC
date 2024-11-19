@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { ModalSoporteComponent } from '../../layout/modal-soporte/modal-soporte.component';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import {Router } from '@angular/router';
+import { ModalSoporteComponent } from '../../layout/modal-soporte/modal-soporte.component';
 
 @Component({
   selector: 'app-soporte',
@@ -14,12 +14,9 @@ export class SoporteComponent {
 
   area: string = '';
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.area = params['area'] || 'Otro';
-    })
+  actualizarArea(area: string):void {
+    this.area = area;
   }
-
 }
