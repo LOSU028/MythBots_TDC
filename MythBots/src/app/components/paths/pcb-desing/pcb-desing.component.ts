@@ -91,7 +91,7 @@ export class PcbDesingComponent implements OnInit {
 
   // Método para redirigir a la ruta '/soporte' al hacer clic
   soporte(): void {
-    this.router.navigate(['/soporte']);
+    window.open('/soporte', '_blank');
   }
 
   // === Métodos para manejo de archivos ===
