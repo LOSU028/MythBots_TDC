@@ -92,7 +92,8 @@
 
             <!-- Campo Archivos -->
             <div class="formCampo archivo">
-                <label class="formLabel" for="archivos">Archivos de Referencia <span class="opcional">(Opcional)</span></label>
+                <label class="formLabel" for="archivos">Archivos de Referencia <span
+                        class="opcional">(Opcional)</span></label>
                 <div formArrayName="archivos" class="inputArchivo">
                     <div *ngFor="let archivo of archivos.controls; let i = index" class="archivo-container">
                         <div class="archivo-contenedor">
@@ -103,7 +104,8 @@
                         </div>
                     </div>
                     <!-- boton añadir mas -->
-                    <button type="button" class="iconAgregar" (click)="addArchivo()" [disabled]="archivos.controls.length > 5 || !archivoSubido">
+                    <button type="button" class="iconAgregar" (click)="addArchivo()"
+                        [disabled]="archivos.controls.length > 5 || !archivoSubido">
                         <i class="fa-solid fa-plus"></i> Añadir más...
                     </button>
                 </div>
@@ -133,4 +135,10 @@
             <button type="submit" class="formBoton" [disabled]="cotizacionForm.invalid">Enviar</button>
         </form>
     </section>
+    <!-- Boton soporte -->
+    <div class="boton-soporte">
+        <button (click)="soporte()">
+            ¿Necesitas ayuda?
+        </button>
+    </div>
 </article>
