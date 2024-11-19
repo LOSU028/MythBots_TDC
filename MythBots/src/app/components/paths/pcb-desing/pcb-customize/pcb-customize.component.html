@@ -1,25 +1,18 @@
 <section class="pcb-customize">
     <!-- Campo de descripcion-->
-     <div class="descripcion">
+    <div class="descripcion">
         <h2> Describe a detalle la idea que tienes pensado para tu proyecto.</h2>
         <p> Describe como: tamaños, colores, componentes, cantidades, etc.</p>
-        <textarea
-            class="campo-texto"
-            placeholder="Escribe los detalles aqui..."
-            [(ngModel)]="descripcion"></textarea>
+        <textarea class="campo-texto" placeholder="Escribe los detalles aqui..." [(ngModel)]="descripcion"></textarea>
     </div>
 
     <!-- Campo de referencia de archivos-->
-     <div class="referencias">
+    <div class="referencias">
         <h2>Referencia</h2>
         <p>Para mas facilidad, incluye imagenes, videos, archivos, para tomarlos como referencia</p>
-        
+
         <div *ngFor="let archivo of archivos; let i = index" class="campo-archivo">
-            <input
-                type="file"
-                (change)="onFileSelected($event, i)"
-                class="input-file"
-            />
+            <input type="file" (change)="onFileSelected($event, i)" class="input-file" />
             <button *ngIf="archivo" (click)="eliminarArchivo(i)" class="btn-eliminar">
                 🗑
             </button>

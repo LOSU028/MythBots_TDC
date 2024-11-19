@@ -15,7 +15,7 @@
 
         p {
             font-size: 1rem;
-            color: $color-secondary;
+            color: $color-black;
             margin-bottom: 10px;
         }
 
@@ -26,7 +26,7 @@
             border-radius: 4px;
             padding: 10px;
             resize: vertical;
-            font-size: 1rem;
+            font-size: 16px;
             color: $color-gray-7;
 
             &:focus {
@@ -39,10 +39,14 @@
     // Estilo para la sección de referencias
     .referencias {
 
-        h2,
-        p {
-            font-size: 1rem;
+        h2 {
+            font-size: 16px;
             color: $color-primary;
+        }
+
+        p {
+            font-size: 16px;
+            color: $color-black;
         }
 
         .campo-archivo {
@@ -70,17 +74,16 @@
 
         // Botón para añadir más archivos
         .btn-agregar {
-            margin-top: 10px;
-            padding: 8px 12px;
-            font-size: 1rem;
-            color: $color-primary;
-            border: 1px solid $color-primary;
-            border-radius: 4px;
-            background-color: transparent;
+            background-color: $color-primary;
+            color: $color-white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
 
             &:hover {
-                background-color: lighten($color-primary, 30%);
+                background-color: darken($color-primary, 10%);
             }
         }
     }
