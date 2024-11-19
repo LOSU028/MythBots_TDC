@@ -16,6 +16,10 @@ export interface RegisterPayload{
     password: string;
 }
 
+export interface fileUploadPayload{
+    file: File;
+}
+
 export interface ApiResponse<T>{
     status?: boolean;
     message?: string;

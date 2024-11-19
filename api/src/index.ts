@@ -7,12 +7,14 @@ import userRoutes from './routes/userRoute';
 import cors from 'cors';
 import routes from './routes';
 
+
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 const app: Application = express();
 const httpServer = createServer(app);
 const io = new SocketIOServer(httpServer);
+
 
 mongoose
   .connect(process.env.DB_URL!)
@@ -32,5 +34,20 @@ app.get('/', (req,res)=>{
 httpServer.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+io.on('connection',(socket) => {
+  console.log('Client connected');
+
+  socket.on('joinRoom',(roomId) => {
+    socket.join('room-'+roomId);
+  })  
+
+  socket.on('sendNewMessage',(data) => {
+    console.log('New message: ', data);
+
+    socket.to('room-'+data.room).emit('message recieved', data)
+  })
+})
+
 
 

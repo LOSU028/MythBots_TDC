@@ -64,7 +64,7 @@
             <div class="formCampo">
                 <label for="archivo" class="formLabel">Subir archivo</label>
                 <div class="inputArchivo">
-                    <input type="file" id="archivo" class="formInput archivo" name="archivo">
+                    <input type="file" id="archivo" class="formInput archivo" name="archivo" (change)="onFileSelected($event)">
                     <span class="iconEliminar" onclick="eliminarArchivo()">🗑️</span> <!-- Emoji para eliminar -->
                 </div>
             </div>
@@ -77,7 +77,7 @@
             </div>
 
             <!-- Botón de Envío -->
-            <button type="submit" class="formBoton">Enviar</button>
+            <button type="submit" class="formBoton" (click)="onFileUpload()">Enviar</button>
         </form>
     </section>
 </article>
