@@ -1,0 +1,99 @@
+@import '../../../../variables';
+
+// Contenedor principal del chat
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    //background: $background-gradient;
+    color: $color-white;
+}
+
+// Encabezado del chat
+.chat-header {
+    text-align: center;
+    color: $color-white;
+    padding: 20px;
+    background: $color-primary-4;
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 2px solid $color-primary-hover;
+}
+
+// Contenedor de mensajes
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: $color-white;
+}
+
+// Estilos de mensajes
+.message {
+    max-width: 50%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 16px;
+
+    // Mensajes enviados
+    &.sent {
+        align-self: flex-end;
+        background: $color-primary;
+        color: $color-white;
+    }
+
+    // Mensajes recibidos
+    &.received {
+        align-self: flex-start;
+        background: $color-gray-2;
+        color: $color-black;
+    }
+}
+
+// Footer con input y botón
+.chat-footer {
+    display: flex;
+    padding: 10px;
+    background: $color-primary-3;
+    border-top: 2px solid $color-primary-hover;
+
+    .chat-input {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-right: 10px;
+    }
+
+    .send-button {
+        width: 20%;
+        padding: 10px;
+        background: $color-tertiary;
+        color: $color-white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+
+        &:hover {
+            background: $color-tertiary-6;
+        }
+    }
+}
+
+// Responsivo
+@media (max-width: $breakpoint-tablet) {
+    .chat-messages {
+        font-size: 14px;
+    }
+
+    .send-button {
+        width: 30%;
+    }
+}

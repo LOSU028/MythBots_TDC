@@ -11,6 +11,7 @@ import { FunkoHomeComponent } from './components/paths/funko/funko-home/funko-ho
 import { PcbDesingComponent } from './components/paths/pcb-desing/pcb-desing.component';
 import { PcbBasicComponent } from './components/paths/pcb-desing/pcb-basic/pcb-basic.component';
 import { PcbCustomizeComponent } from './components/paths/pcb-desing/pcb-customize/pcb-customize.component';
+import { SoporteComponent } from './components/paths/soporte/soporte.component';
 export const routes: Routes = [
 
     // default
@@ -45,6 +46,8 @@ export const routes: Routes = [
             { path: 'customize', component: PcbCustomizeComponent }
         ]
     },
+    // /soporte
+    { path: 'soporte', component: SoporteComponent },
     // /contact
     { path: 'contact', component: ContactanosComponent },
     // /config
