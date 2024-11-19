@@ -35,4 +35,4 @@ const upload = multer({
     })
 })
 
-export const uploadS3 = upload.single('file');
+export const uploadS3 = upload.array('files');

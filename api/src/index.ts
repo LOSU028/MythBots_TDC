@@ -15,8 +15,6 @@ const app: Application = express();
 const httpServer = createServer(app);
 export const io = new SocketIOServer(httpServer);
 
-export const io = new SocketIOServer(httpServer);
-
 
 mongoose
   .connect(process.env.DB_URL!)

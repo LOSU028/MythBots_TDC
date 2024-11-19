@@ -10,10 +10,12 @@ export class FileUploadService {
 
   constructor(private httpClient: HttpClient) { }
 
-  FileUpload(file: File) {
+  FileUpload(files: File[]) {
     const formData = new FormData();
-    formData.append('file', file);
-    console.log('file uploading');
+    files.forEach((value) => {
+      formData.append('files', value);
+    })
+    console.log('files uploading');
     return this.httpClient.post(`${ApiEndpoint.fileUpload}`, formData);
   }
 }

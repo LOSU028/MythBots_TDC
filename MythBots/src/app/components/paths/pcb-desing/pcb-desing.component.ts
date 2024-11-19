@@ -15,22 +15,8 @@ import { FileUploadService } from '../../../core/services/file-upload.service';
 })
 export class PcbDesingComponent implements OnInit {
   selectedFile : File | any;
-
-  onFileUpload() {
-    this.fileUploadService.FileUpload(this.selectedFile).subscribe({
-      next:(response) =>{
-        console.log(response);
-      }
-    });
-  }
-
-  onFileSelected(event: Event): void {
-    console.log("File selected")
-    const FILE = (event.target as HTMLInputElement).files?.[0];
-    this.selectedFile = FILE;
-    console.log(this.selectedFile)
-    
-  }
+  filestoupload: File[] = [];
+ 
   // === Variables inicializadas con datos estáticos ===
 
   // Banner
@@ -137,6 +123,10 @@ export class PcbDesingComponent implements OnInit {
     const archivoInput = event.target as HTMLInputElement;
     const archivo = archivoInput?.files?.[0];
 
+    this.selectedFile = archivo;
+    console.log(this.selectedFile);
+    this.filestoupload.push(this.selectedFile);
+    console.log(this.filestoupload)
     if (archivo) {
       if (archivo.size > 25 * 1024 * 1024) {
         alert('El archivo excede el tamaño máximo permitido de 25MB.');
@@ -151,6 +141,7 @@ export class PcbDesingComponent implements OnInit {
         this.archivoSubido = true; // Desbloqueamos el botón de añadir mas
       }
     }
+
   }
 
   // Manejo del envío del formulario
@@ -162,5 +153,11 @@ export class PcbDesingComponent implements OnInit {
     } else {
       console.log('Formulario no válido');
     }
+
+    this.fileUploadService.FileUpload(this.filestoupload).subscribe({
+      next:(response) =>{
+        console.log(response);
+      }
+    });
   }
 }
