@@ -13,7 +13,7 @@ dotenv.config();
 const PORT = process.env.PORT || 3000;
 const app: Application = express();
 const httpServer = createServer(app);
-const io = new SocketIOServer(httpServer);
+export const io = new SocketIOServer(httpServer);
 
 
 mongoose
