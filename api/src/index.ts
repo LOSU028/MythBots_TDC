@@ -37,15 +37,10 @@ httpServer.listen(PORT, () => {
 
 io.on('connection',(socket) => {
   console.log('Client connected');
-
-  //socket.on('joinRoom',(roomId) => {
-  //  socket.join('room-'+roomId);
-  //})  
-
+ 
   socket.on('sendNewMessage',(data) => {
     console.log('New message: ', data);
-
-    socket.to('room-'+data.room).emit('message recieved', data)
+    io.emit('new message', {message: data.message});
   })
 })
 

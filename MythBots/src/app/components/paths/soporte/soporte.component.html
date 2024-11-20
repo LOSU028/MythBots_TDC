@@ -17,21 +17,26 @@
 
     <main class="chat-messages">
         <!-- Mensajes enviados (Ejemplo) -->
-        <div class="message sent">
-            Hola, ¿en qué puedo ayudarte?
-        </div>
+        @for(message of messages; track message){
+            <div class="message sent">
+                {{message}}
+            </div>
+        }
 
         <!-- Mensajes recibidos (Ejemplo) -->
-        <div class="message received">
+        <!--<div class="message received">
             Tengo una consulta sobre mi pedido.
-        </div>
+        </div>-->
     </main>
 
     <footer class="chat-footer">
         <!-- Campo de entrada para el mensaje -->
-        <input type="text" class="chat-input" placeholder="Escribe un mensaje..." />
-
+         <form [formGroup]="form" (submit)="sendMessage()">
+            <input type="text" class="chat-input" formControlName="message" placeholder="Escribe un mensaje..." />
+            <button class="send-button">Enviar</button>
+        </form>
+        
         <!-- Botón para enviar el mensaje -->
-        <button class="send-button">Enviar</button>
+        
     </footer>
 </section>
