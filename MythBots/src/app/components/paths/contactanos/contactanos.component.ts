@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contactanos',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './contactanos.component.html',
   styleUrl: './contactanos.component.scss'
 })
@@ -13,6 +13,26 @@ export class ContactanosComponent {
 
   contactForm!: FormGroup;
   errorArchivo: string | null = null;
+
+
+  //contact-info
+  contacts = [
+    {
+      icon: 'fas fa-envelope',
+      text: 'Mythbots@outlook.com',
+      link: 'mailto:mythbots-soporte@outlook.com'
+    },
+    {
+      icon: 'fab fa-whatsapp',
+      text: 'Whatsapp',
+      link: 'https://wa.me/123456789'
+    },
+    {
+      icon: 'fas fa-phone',
+      text: '+52 123 123 1234',
+      link: 'tel:+123456789',
+    },
+  ]
 
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
@@ -40,16 +60,18 @@ export class ContactanosComponent {
     if (file) {
       const validExtensions = [
         'application/pdf',
+        'application/zip',
         'image/jpeg',
         'image/png',
         'image/jpg',
         'video/mp4',
-        'application/zip',
         'model/gltf+json',
         'model/3mf',
       ];
+      //Tamaño 25MB
       const maxSize = 25 * 1024 * 1024; // 25 MB
 
+      //Validar extensiones
       if (!validExtensions.includes(file.type)) {
         this.errorArchivo = 'Formato de archivo no permitido.';
         this.contactForm.get('file')?.setValue(null);
@@ -62,16 +84,27 @@ export class ContactanosComponent {
     }
   }
 
+  //limpiar archivo
+  limpiarArchivo(): void {
+    this.contactForm.get('file')?.setValue(null);
+    this.errorArchivo = null; // Resetear mensaje de error
+    const fileInput = document.getElementById('file') as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = ''; // Limpiar el campo
+    }
+  }
+
+
+
   // Enviar formulario
   enviarFormulario(): void {
     if (this.contactForm.valid) {
-      const formData = new FormData();
-      formData.append('name', this.contactForm.get('name')?.value);
-      formData.append('email', this.contactForm.get('email')?.value);
-      if (this.contactForm.get('file')?.value) {
-        formData.append('file', this.contactForm.get('file')?.value);
-      }
-      formData.append('message', this.contactForm.get('message')?.value);
+      const formData = {
+        name: this.contactForm.get('name')?.value,
+        email: this.contactForm.get('email')?.value,
+        file: this.contactForm.get('file')?.value,
+        message: this.contactForm.get('message')?.value,
+      };
 
       //Proximamente - implementar el envío a una API
       console.log('Formulario enviado:', formData);

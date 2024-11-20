@@ -3,11 +3,11 @@
   <section class="contact-form">
     <h2>Contáctanos</h2>
 
-    <form (ngSubmit)="enviarFormulario()">
+    <form [formGroup]="contactForm" (ngSubmit)="enviarFormulario()">
       <!-- Campo Nombre -->
       <div class="formCampo">
-        <label class="formLabel" for="name">Nombre:</label>
-        <input class="formInput" type="text" id="name" formControlName="name"
+        <label class="formLabel" for="name">Nombre:<span class="requerido">*</span></label>
+        <input class="formInput" type="text" id="name" formControlName="name" placeholder="Escribe tu nombre(s)"
           [ngClass]="{'error': nombreControl?.invalid && (nombreControl?.dirty || nombreControl?.touched)}" />
         <div *ngIf="nombreControl?.invalid && (nombreControl?.dirty || nombreControl?.touched)" class="errorMensaje">
           <span *ngIf="nombreControl?.errors?.['required']">El nombre es requerido.</span>
@@ -17,8 +17,9 @@
 
       <!-- Campo Correo -->
       <div class="formCampo">
-        <label class="formLabel" for="email">Correo:</label>
+        <label class="formLabel" for="email">Correo:<span class="requerido">*</span></label>
         <input class="formInput" type="email" id="email" formControlName="email"
+          placeholder="Escribe tu correo electronico"
           [ngClass]="{'error': correoControl?.invalid && (correoControl?.dirty || correoControl?.touched)}" />
         <div *ngIf="correoControl?.invalid && (correoControl?.dirty || correoControl?.touched)" class="errorMensaje">
           <span *ngIf="correoControl?.errors?.['required']">El correo es requerido.</span>
@@ -29,14 +30,20 @@
       <!-- Campo Archivo -->
       <div class="formCampo archivo">
         <label class="formLabel" for="file">Subir archivo:</label>
-        <input class="formInput" type="file" id="file" (change)="validarArchivo($event)" />
+        <div class="archivo-contenedor">
+          <input class="formInput" type="file" id="file" (change)="validarArchivo($event)" />
+          <button class="icono-basura" *ngIf="contactForm.get('file')?.value" type="button" (click)="limpiarArchivo()">
+            <i class="fa-solid fa-trash-can"></i>
+          </button>
+        </div>
         <div *ngIf="errorArchivo" class="errorMensaje">{{ errorArchivo }}</div>
       </div>
 
       <!-- Campo Mensaje -->
       <div class="formCampo">
         <label class="formLabel" for="message">Mensaje:</label>
-        <textarea class="formInput" id="message" rows="4" formControlName="message"></textarea>
+        <textarea class="formInput" id="message" rows="4" formControlName="message"
+          placeholder="Cuentanos..."></textarea>
       </div>
 
       <!-- Botón Enviar -->
@@ -49,18 +56,16 @@
     <img src="/resources/mythbots_logo.png" alt="Compañía" class="company-image" />
     <div class="additional-contact">
       <p>O también puedes contactarnos de la siguiente manera:</p>
-      <ul>
-        <li>
-          <a href="mailto:soporte@empresa.com" target="_blank">
-            <i class="fas fa-envelope"></i> soporte.com
+      <section class="contact-container">
+        <div class="dynamic-contact" *ngFor="let contact of contacts">
+          <a [href]="contact.link" target="_blank" class="contact-btn">
+            <div class="icon">
+              <i [class]="contact.icon"></i>
+            </div>
+            <div class="text"> {{contact.text}}</div>
           </a>
-        </li>
-        <li>
-          <a href="https://wa.me/1234567890" target="_blank">
-            <i class="fab fa-whatsapp"></i> WhatsApp
-          </a>
-        </li>
-      </ul>
+        </div>
+      </section>
     </div>
   </section>
 </section>
