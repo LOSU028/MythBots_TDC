@@ -1,21 +1,66 @@
-<div class="contact-us-container">
-  <div class="contact-form">
-    <h2>Contactanos</h2>
+<section class="contact-us-container">
+  <!-- Lado izquierdo: Formulario -->
+  <section class="contact-form">
+    <h2>Contáctanos</h2>
 
-    <label for="name">Nombre:</label>
-    <input type="text" id="name" required />
+    <form (ngSubmit)="enviarFormulario()">
+      <!-- Campo Nombre -->
+      <div class="formCampo">
+        <label class="formLabel" for="name">Nombre:</label>
+        <input class="formInput" type="text" id="name" formControlName="name"
+          [ngClass]="{'error': nombreControl?.invalid && (nombreControl?.dirty || nombreControl?.touched)}" />
+        <div *ngIf="nombreControl?.invalid && (nombreControl?.dirty || nombreControl?.touched)" class="errorMensaje">
+          <span *ngIf="nombreControl?.errors?.['required']">El nombre es requerido.</span>
+          <span *ngIf="nombreControl?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres.</span>
+        </div>
+      </div>
 
-    <label for="email">Correo:</label>
-    <input type="email" id="email" required />
+      <!-- Campo Correo -->
+      <div class="formCampo">
+        <label class="formLabel" for="email">Correo:</label>
+        <input class="formInput" type="email" id="email" formControlName="email"
+          [ngClass]="{'error': correoControl?.invalid && (correoControl?.dirty || correoControl?.touched)}" />
+        <div *ngIf="correoControl?.invalid && (correoControl?.dirty || correoControl?.touched)" class="errorMensaje">
+          <span *ngIf="correoControl?.errors?.['required']">El correo es requerido.</span>
+          <span *ngIf="correoControl?.errors?.['email']">El formato del correo no es válido.</span>
+        </div>
+      </div>
 
-    <label for="file">Subir archivo:</label>
-    <input type="file" id="file" />
+      <!-- Campo Archivo -->
+      <div class="formCampo archivo">
+        <label class="formLabel" for="file">Subir archivo:</label>
+        <input class="formInput" type="file" id="file" (change)="validarArchivo($event)" />
+        <div *ngIf="errorArchivo" class="errorMensaje">{{ errorArchivo }}</div>
+      </div>
 
-    <label for="message">Mensaje:</label>
-    <textarea id="message" rows="4" required></textarea>
+      <!-- Campo Mensaje -->
+      <div class="formCampo">
+        <label class="formLabel" for="message">Mensaje:</label>
+        <textarea class="formInput" id="message" rows="4" formControlName="message"></textarea>
+      </div>
 
-    <button class="send-button">Enviar</button>
-  </div>
-  
-  <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541" alt="Compañía" class="company-image" />
-</div>
+      <!-- Botón Enviar -->
+      <button class="formBoton" type="submit" [disabled]="contactForm.invalid">Enviar</button>
+    </form>
+  </section>
+
+  <!-- Lado derecho: Imagen y contacto alternativo -->
+  <section class="contact-info">
+    <img src="/resources/mythbots_logo.png" alt="Compañía" class="company-image" />
+    <div class="additional-contact">
+      <p>O también puedes contactarnos de la siguiente manera:</p>
+      <ul>
+        <li>
+          <a href="mailto:soporte@empresa.com" target="_blank">
+            <i class="fas fa-envelope"></i> soporte.com
+          </a>
+        </li>
+        <li>
+          <a href="https://wa.me/1234567890" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</section>
