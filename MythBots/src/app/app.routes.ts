@@ -13,6 +13,7 @@ import { PcbBasicComponent } from './components/paths/pcb-desing/pcb-basic/pcb-b
 import { PcbCustomizeComponent } from './components/paths/pcb-desing/pcb-customize/pcb-customize.component';
 import { authGuardGuard } from './guards/auth-guard.guard';
 import { SoporteComponent } from './components/paths/soporte/soporte.component';
+import { provideHttpClient } from '@angular/common/http';
 export const routes: Routes = [
 
     // default

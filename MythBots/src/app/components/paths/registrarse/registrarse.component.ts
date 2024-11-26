@@ -27,6 +27,7 @@ export class RegistrarseComponent {
   registrar(){
     if (this.form.valid){
       console.log('Registrando...')
+      console.log(this.form.value)
       this.registerService.register(this.form.value).subscribe({
         next:(response) =>{
           console.log(response);
