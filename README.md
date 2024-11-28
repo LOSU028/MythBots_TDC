@@ -62,8 +62,19 @@ En DB_URL se debe de poner la url de mongoDB correspondiente
 ```bash
 npm run dev
 ```
-
 5. La api ahora debe estar en funcionamiento, si requiere las credenciales de un usuario de prueba para login puede ser
 
 username = test
 password = G+4s/gk<Ph6;vZe7Bm:[^f
+
+## Instrucciones para correr pruebas
+1.Correr el siguiente comando
+```bash
+ng test
+```
+
+## Instrucciones para correr pruebas e2e
+1.Correr el siguiente comando
+```bash
+npm run e2e
+```
