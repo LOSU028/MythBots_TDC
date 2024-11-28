@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "build": "npm i --include dev && tsc",
+    "build": "npm i --include dev && npm i --save-dev @types/uuid && tsc",
     "start" : "node src/index.js"
   },
   "keywords": [],
