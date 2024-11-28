@@ -16,7 +16,6 @@ import { FileUploadService } from '../../../core/services/file-upload.service';
 export class PcbDesingComponent implements OnInit {
   selectedFile : File | any;
   filestoupload: File[] = [];
- 
   // === Variables inicializadas con datos estáticos ===
 
   // Banner
@@ -159,5 +158,6 @@ export class PcbDesingComponent implements OnInit {
         console.log(response);
       }
     });
+    this.router.navigate(['/home']);
   }
 }
