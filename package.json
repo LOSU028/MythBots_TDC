@@ -1,0 +1,14 @@
+{
+  "name": "mythbots_tdc",
+  "version": "1.0.0",
+  "description": "Repositorio para el proyecto de tecnologías de desarrollo en el cliente",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild" : "cd api && npm run build",
+    "build" : "cd MythBots && npm run build",
+    "start" : "cd api && npm run start"
+  },
+  "author": "",
+  "license": "ISC"
+}

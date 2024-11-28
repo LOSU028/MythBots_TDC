@@ -16,7 +16,7 @@ const fileFilter = (req: Request, file: Express.Multer.File, cb: FileFilterCallb
 aws.config.update({
     secretAccessKey: process.env.SECRET_ACCESS_KEY,
     accessKeyId: process.env.ACCESS_KEY_ID,
-    sessionToken: process.env.AWS_SESSION_TOKEN,
+    //sessionToken: process.env.AWS_SESSION_TOKEN,
     region: process.env.S3_REGION
 });
 

@@ -6,6 +6,7 @@ import { Server as SocketIOServer } from 'socket.io';
 import userRoutes from './routes/userRoute';
 import cors from 'cors';
 import routes from './routes';
+import path from 'path';
 
 
 dotenv.config();
@@ -26,11 +27,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+app.use('/', express.static(path.join(__dirname, '..', 'public')))
 app.use('/users', userRoutes);
 app.use(routes);
-app.get('/', (req,res)=>{
-    res.json({message: "App is working fine"});
-})
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, '..', 'public') + '/browser/index.html');
+});
 httpServer.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
