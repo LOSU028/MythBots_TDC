@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "build": "npm i && tsc",
+    "build": "npm i --include dev && tsc",
     "start" : "node src/index.js"
   },
   "keywords": [],
